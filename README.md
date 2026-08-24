@@ -10,6 +10,7 @@ Desenvolvedor Front-end Freelancer focado em sites institucionais e landing page
 
 ## Projeto em destaque
 - [Tolepar Metalúrgica - Site Institucional](https://github.com/Alceu3/tolepar-metalurgica-site)
+- **AI Launch Kit** — sistema de venda automatizado (landing page + checkout em dólar via Gumroad) de templates de landing page para startups de IA/SaaS. Veja [SALES_SYSTEM.md](./SALES_SYSTEM.md) para o passo a passo de configuração.
 
 ## Tecnologias
 - HTML5

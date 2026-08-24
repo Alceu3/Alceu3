@@ -47,9 +47,9 @@ Ter a página no ar não gera tráfego sozinho. Para ter chance real de bater me
 - **Marketplaces de template**: liste os templates também em lugares como Gumroad Discover, Framer Marketplace, ou similares, para tráfego orgânico extra.
 - **SEO**: como a página já tem meta tags e sitemap, submeta a URL no Google Search Console para começar a indexar.
 
-Se quiser, na próxima etapa eu posso criar:
-- Textos prontos (copy) para os posts acima, já escritos, para você só copiar e colar.
-- Um GitHub Action que publica automaticamente em redes sociais via API, caso você me forneça as credenciais (tokens) dessas contas.
+Os textos prontos para cada plataforma (Reddit, Indie Hackers, X/Twitter, LinkedIn, Product Hunt) já estão em [MARKETING_COPY.md](./MARKETING_COPY.md) — é só copiar, colar o link do site e publicar.
+
+Se quiser automatizar ainda mais, posso criar um GitHub Action que publica automaticamente em redes sociais via API, caso você me forneça as credenciais (tokens) dessas contas.
 
 ## 5. Contato do produto
 

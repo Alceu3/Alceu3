@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aria — Something new is coming</title>
+<meta name="description" content="Aria launches soon. Join the waitlist to get early access.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="wrap">
+  <div class="card">
+    <span class="eyebrow">Launching soon</span>
+    <h1>Aria is almost ready.</h1>
+    <p class="lead">We're building the fastest way to manage your projects with AI. Join the waitlist and be the first to know when we launch.</p>
+
+    <!--
+      Replace the form "action" below with your own endpoint to actually collect emails.
+      Easiest free options (no backend code needed):
+        1) Formspree (https://formspree.io) — create a form, paste your endpoint here.
+        2) Gumroad "coming soon" list — use a Gumroad product landing page instead.
+        3) Google Forms — swap this form for an embedded Google Form iframe.
+    -->
+    <form class="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
+      <button type="submit" class="btn btn-primary">Join waitlist</button>
+    </form>
+    <p class="note">No spam. Unsubscribe anytime.</p>
+
+    <!-- Placeholder stats — replace with your real numbers before publishing. Do not leave fake figures live. -->
+    <div class="stat-row">
+      <div><strong>[N]</strong><span>on the waitlist</span></div>
+      <div><strong>[Date]</strong><span>expected launch</span></div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Template by Alceu Cordeiro — part of the AI Launch Kit.</p>
+</footer>
+
+</body>
+</html>

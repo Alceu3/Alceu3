@@ -1,0 +1,445 @@
+<template>
+  <div id="root" data-composition-id="04-julgamento">
+    <style>
+      #root {
+        --jul04-ink: #111111;
+        --jul04-cream: #f0ece5;
+        --jul04-orange: #e85d26;
+        --jul04-border: #282826;
+        --jul04-ink-muted: rgba(17, 17, 17, 0.55);
+        --jul04-font-display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+        --jul04-font-mono: "Courier New", monospace;
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+
+      #root .jul04-bg {
+        background: var(--jul04-ink);
+      }
+
+      #root .jul04-glow {
+        position: absolute;
+        top: 480px;
+        width: 900px;
+        height: 900px;
+        margin-top: -450px;
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #root .jul04-glow-left {
+        left: 576px;
+        margin-left: -450px;
+        background: radial-gradient(circle, rgba(232, 93, 38, 0.65) 0%, rgba(232, 93, 38, 0) 70%);
+      }
+      #root .jul04-glow-right {
+        left: 1344px;
+        margin-left: -450px;
+        background: radial-gradient(circle, rgba(232, 93, 38, 0.65) 0%, rgba(232, 93, 38, 0) 70%);
+      }
+
+      #root .jul04-num {
+        position: absolute;
+        left: 96px;
+        top: 812px;
+        font-family: var(--jul04-font-mono);
+        font-size: 15px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(240, 236, 229, 0.35);
+        opacity: 0;
+      }
+
+      #root .jul04-kicker-wrap {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 1920px;
+        text-align: center;
+        opacity: 0;
+      }
+      #root .jul04-kicker {
+        display: inline-block;
+        font-family: var(--jul04-font-mono);
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--jul04-cream);
+      }
+      #root .jul04-rule {
+        display: block;
+        width: 36px;
+        height: 2px;
+        background: var(--jul04-orange);
+        margin: 10px auto 0;
+      }
+
+      #root .jul04-stage {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1400px;
+      }
+      #root .jul04-split {
+        display: flex;
+        gap: 80px;
+        transform-style: preserve-3d;
+        margin-top: 40px;
+      }
+      #root .jul04-card {
+        width: 760px;
+        height: 480px;
+        background: var(--jul04-cream);
+        border: 1px solid var(--jul04-border);
+        box-sizing: border-box;
+        padding: 40px 48px;
+        transform-style: preserve-3d;
+        will-change: transform;
+        position: relative;
+      }
+      #root .jul04-card-left {
+        transform-origin: 50% 50%;
+      }
+      #root .jul04-card-right {
+        transform-origin: 50% 50%;
+      }
+      #root .jul04-panel-label {
+        font-family: var(--jul04-font-mono);
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--jul04-ink-muted);
+      }
+      #root .jul04-headline {
+        font-family: var(--jul04-font-display);
+        font-weight: 700;
+        font-size: 52px;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--jul04-ink);
+        margin-top: 26px;
+        text-transform: lowercase;
+      }
+      #root .jul04-reaction {
+        font-family: var(--jul04-font-display);
+        font-weight: 900;
+        font-size: 88px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        text-transform: lowercase;
+        margin-top: 34px;
+        opacity: 0;
+      }
+      #root .jul04-reaction-left {
+        color: var(--jul04-ink);
+      }
+      #root .jul04-reaction-right {
+        color: var(--jul04-orange);
+      }
+      #root .jul04-line-svg {
+        display: block;
+        margin-top: 26px;
+        width: 440px;
+        height: 44px;
+      }
+      #root .jul04-line-path {
+        fill: none;
+        stroke-width: 3px;
+      }
+      #root .jul04-line-path-left {
+        stroke: var(--jul04-ink);
+      }
+      #root .jul04-line-path-right {
+        stroke: var(--jul04-orange);
+      }
+
+      #root .jul04-payoff-wrap {
+        position: absolute;
+        left: 0;
+        top: 405px;
+        width: 1920px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+      }
+      #root .jul04-payoff {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform-origin: 50% 50%;
+        white-space: nowrap;
+        font-family: var(--jul04-font-display);
+        font-weight: 900;
+        text-transform: lowercase;
+        text-align: center;
+      }
+      #root .jul04-payoff-a {
+        font-size: 58px;
+        letter-spacing: -0.015em;
+        color: var(--jul04-cream);
+        transform: translate(-50%, -50%) scale(0.85);
+        opacity: 0;
+      }
+      #root .jul04-payoff-b {
+        font-size: 104px;
+        letter-spacing: -0.03em;
+        color: var(--jul04-cream);
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+        z-index: 6;
+      }
+      #root .jul04-glow-word {
+        display: inline-block;
+        color: var(--jul04-orange);
+        text-shadow: 0 0 0px rgba(232, 93, 38, 0);
+        transform-origin: 50% 50%;
+      }
+    </style>
+
+    <div class="clip jul04-bg" data-start="0" data-duration="8.747" data-track-index="0"></div>
+
+    <div
+      class="clip jul04-glow jul04-glow-left"
+      id="jul04-glow-left"
+      data-start="0"
+      data-duration="8.747"
+      data-track-index="1"
+    ></div>
+    <div
+      class="clip jul04-glow jul04-glow-right"
+      id="jul04-glow-right"
+      data-start="0"
+      data-duration="8.747"
+      data-track-index="1"
+    ></div>
+
+    <div class="clip jul04-num" id="jul04-num" data-start="0" data-duration="8.747" data-track-index="2">
+      n.04
+    </div>
+
+    <div
+      class="clip jul04-kicker-wrap"
+      id="jul04-kicker-wrap"
+      data-start="0"
+      data-duration="8.747"
+      data-track-index="2"
+    >
+      <span class="jul04-kicker">mesma notícia</span>
+      <span class="jul04-rule"></span>
+    </div>
+
+    <div class="clip jul04-stage" data-start="0" data-duration="8.747" data-track-index="3">
+      <div class="jul04-split">
+        <div class="jul04-card jul04-card-left" id="jul04-card-left">
+          <div class="jul04-panel-label">pessoa a</div>
+          <div class="jul04-headline">demitido</div>
+          <div class="jul04-reaction jul04-reaction-left" id="jul04-reaction-left">desespera</div>
+          <svg class="jul04-line-svg" id="jul04-line-left" viewBox="0 0 440 44">
+            <path
+              id="jul04-path-left"
+              class="jul04-line-path jul04-line-path-left"
+              d="M4,8 L90,16 L170,14 L250,30 L330,26 L436,40"
+              stroke-dasharray="600"
+              stroke-dashoffset="600"
+            />
+          </svg>
+        </div>
+        <div class="jul04-card jul04-card-right" id="jul04-card-right">
+          <div class="jul04-panel-label">pessoa b</div>
+          <div class="jul04-headline">demitido</div>
+          <div class="jul04-reaction jul04-reaction-right" id="jul04-reaction-right">oportunidade</div>
+          <svg class="jul04-line-svg" id="jul04-line-right" viewBox="0 0 440 44">
+            <path
+              id="jul04-path-right"
+              class="jul04-line-path jul04-line-path-right"
+              d="M4,40 L90,26 L170,30 L250,14 L330,16 L436,8"
+              stroke-dasharray="600"
+              stroke-dashoffset="600"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="clip jul04-payoff-wrap"
+      id="jul04-payoff-wrap"
+      data-start="6.4"
+      data-duration="2.347"
+      data-track-index="4"
+    >
+      <div class="jul04-payoff jul04-payoff-a" id="jul04-payoff-a">não são os fatos que perturbam</div>
+      <div class="jul04-payoff jul04-payoff-b" id="jul04-payoff-b">
+        é <span class="jul04-glow-word" id="jul04-glow-word">julgamento</span>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      var jul04Tl = gsap.timeline({ paused: true });
+      window.__timelines["04-julgamento"] = jul04Tl;
+
+      (function (tl) {
+        var TILT = 14;
+        var TILT_OVERSHOOT = 7;
+        var ENTRY_SLIDE = 340;
+        var ENTRY_DUR = 0.9;
+        var LEFT_AT = 0.15;
+        var RIGHT_AT = 0.35;
+
+        // ---- Scene 1 (0.0-1.7s): title settle + split-tilt card entry ----
+        tl.fromTo(
+          "#jul04-kicker-wrap",
+          { y: -26, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+          0.05,
+        );
+
+        tl.fromTo(
+          "#jul04-card-left",
+          { x: -ENTRY_SLIDE, rotateY: TILT + TILT_OVERSHOOT, opacity: 0, y: 0 },
+          { x: 0, rotateY: TILT, opacity: 1, duration: ENTRY_DUR, ease: "power3.out" },
+          LEFT_AT,
+        );
+        tl.fromTo(
+          "#jul04-card-right",
+          { x: ENTRY_SLIDE, rotateY: -TILT - TILT_OVERSHOOT, opacity: 0, y: 0 },
+          { x: 0, rotateY: -TILT, opacity: 1, duration: ENTRY_DUR, ease: "power3.out" },
+          RIGHT_AT,
+        );
+
+        tl.fromTo(
+          "#jul04-glow-left, #jul04-glow-right",
+          { opacity: 0, scale: 0.85 },
+          { opacity: 0.22, scale: 1, duration: 1.0, ease: "power2.out" },
+          0.2,
+        );
+
+        tl.fromTo("#jul04-num", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0.4);
+
+        // headline "demitido" fades up during each card's settle tail
+        tl.fromTo(
+          "#jul04-card-left .jul04-panel-label, #jul04-card-left .jul04-headline",
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.06 },
+          0.65,
+        );
+        tl.fromTo(
+          "#jul04-card-right .jul04-panel-label, #jul04-card-right .jul04-headline",
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.06 },
+          0.85,
+        );
+
+        // ---- Scene 2 (1.7-4.1s): left tilts further inward, "desespera" reveals, descending line ----
+        tl.to("#jul04-card-left", { rotateY: TILT + 3, duration: 0.6, ease: "power2.out" }, 1.8);
+
+        tl.fromTo(
+          "#jul04-reaction-left",
+          { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+          2.05,
+        );
+        tl.to("#jul04-path-left", { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }, 2.75);
+
+        // ---- Scene 3 (4.1-6.4s): right tilts further inward (mirrored), "oportunidade" reveals, ascending line ----
+        tl.to("#jul04-card-right", { rotateY: -(TILT + 3), duration: 0.6, ease: "power2.out" }, 4.2);
+
+        tl.fromTo(
+          "#jul04-reaction-right",
+          { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+          4.55,
+        );
+        tl.to("#jul04-path-right", { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }, 5.25);
+
+        // subtle counter-phase idle bob on the settled pair (composes with rotateY, never overwrites it)
+        (function () {
+          var leftEl = document.getElementById("jul04-card-left");
+          var rightEl = document.getElementById("jul04-card-right");
+          var phase = { p: 0 };
+          tl.to(
+            phase,
+            {
+              p: Math.PI * 2 * 1.8,
+              duration: 5.0,
+              ease: "none",
+              onUpdate: function () {
+                var s = Math.sin(phase.p);
+                gsap.set(leftEl, { y: s * 2.5 });
+                gsap.set(rightEl, { y: Math.sin(phase.p + Math.PI) * 2.5 });
+              },
+            },
+            1.35,
+          );
+        })();
+
+        // ---- Scene 4 (6.4-7.6s): flash-swap phrase crosses the seam, both halves dim ~40% ----
+        tl.to(
+          "#jul04-card-left, #jul04-card-right",
+          { opacity: 0.6, duration: 0.4, ease: "power1.inOut" },
+          6.4,
+        );
+
+        tl.fromTo(
+          "#jul04-payoff-a",
+          { opacity: 0, scale: 0.85 },
+          { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" },
+          6.5,
+        );
+
+        // ---- Scene 5 (7.6-8.747s): scale-swap to "é julgamento", keyword glow, static hold ----
+        tl.to("#jul04-payoff-a", { scale: 0.7, opacity: 0, duration: 0.35, ease: "power2.in" }, 7.6);
+        tl.to("#jul04-payoff-b", { scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.7)" }, 7.8);
+
+        (function () {
+          var wordEl = document.getElementById("jul04-glow-word");
+          var TIMINGS = { start: 8.05, end: 8.65 };
+          var ATTACK_DUR = 0.25;
+          var RELEASE = 0.35;
+          var REST_LEVEL = 0.3;
+          var MAX_BLUR = 26;
+          var MAX_SCALE_BOOST = 0.08;
+
+          function envelope(time) {
+            if (time < TIMINGS.start) return 0;
+            if (time < TIMINGS.end) {
+              return Math.min((time - TIMINGS.start) / ATTACK_DUR, 1);
+            }
+            var releaseEnd = TIMINGS.end + RELEASE;
+            if (time < releaseEnd) {
+              return 1 - ((time - TIMINGS.end) / RELEASE) * (1 - REST_LEVEL);
+            }
+            return REST_LEVEL;
+          }
+
+          var driver = { t: 0 };
+          tl.to(
+            driver,
+            {
+              t: 8.747,
+              duration: 8.747,
+              ease: "none",
+              onUpdate: function () {
+                var env = envelope(driver.t);
+                wordEl.style.textShadow =
+                  "0 0 " + (MAX_BLUR * env).toFixed(1) + "px rgba(232,93,38," + (0.75 * env).toFixed(2) + ")";
+                wordEl.style.transform = "scale(" + (1 + MAX_SCALE_BOOST * env) + ")";
+              },
+            },
+            0,
+          );
+        })();
+      })(jul04Tl);
+    </script>
+  </div>
+</template>

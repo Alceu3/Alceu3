@@ -1,0 +1,262 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .clip {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ---- background / stage ---- */
+    .papel-bg {
+      background: #111111;
+    }
+    .papel-spotlight {
+      position: absolute;
+      left: 50%;
+      top: 300px;
+      width: 900px;
+      height: 900px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(240, 236, 229, 0.14) 0%,
+        rgba(240, 236, 229, 0.05) 40%,
+        rgba(17, 17, 17, 0) 72%
+      );
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    /* ---- mask icon ---- */
+    .papel-mask-wrap {
+      position: absolute;
+      left: 50%;
+      top: 130px;
+      width: 210px;
+      height: 260px;
+      margin-left: -105px; /* centers without a static CSS transform (mask-wrap gets a GSAP scale tween) */
+    }
+    .papel-mask-svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .papel-mask-svg path {
+      fill: none;
+      stroke: #f0ece5;
+      stroke-width: 4.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ---- text stage ---- */
+    .papel-text-stage {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .papel-line {
+      position: absolute;
+      top: 430px;
+      left: 50%;
+      width: 1440px;
+      margin-left: -720px; /* centers without a static CSS transform (these lines get GSAP scale tweens) */
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      column-gap: 22px;
+      row-gap: 6px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 86px;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
+      color: #f0ece5;
+    }
+    .papel-line-open .papel-word {
+      display: inline-block;
+    }
+    .papel-keyword {
+      color: #e85d26;
+      display: inline-block;
+    }
+  </style>
+
+  <div id="root" data-composition-id="09-papel" data-width="1920" data-height="1080">
+    <div class="papel-bg clip" data-start="0" data-duration="6.443" data-track-index="0"></div>
+
+    <div class="clip" data-start="0" data-duration="6.443" data-track-index="1">
+      <div class="papel-spotlight" id="papel-spotlight"></div>
+    </div>
+
+    <div class="clip" data-start="0" data-duration="6.443" data-track-index="2">
+      <div class="papel-mask-wrap">
+        <svg class="papel-mask-svg" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+          <path
+            id="papel-mask-outline"
+            d="M 100 10 C 150 10 175 50 175 100 C 175 150 160 190 140 215 C 130 230 115 245 100 250 C 85 245 70 230 60 215 C 40 190 25 150 25 100 C 25 50 50 10 100 10 Z"
+          />
+          <g id="papel-eye-l"><path class="papel-mask-eye" d="M 65 95 Q 78 78 91 95 Q 78 110 65 95 Z" /></g>
+          <g id="papel-eye-r"><path class="papel-mask-eye" d="M 109 95 Q 122 78 135 95 Q 122 110 109 95 Z" /></g>
+          <path id="papel-mask-mouth" d="M 74 178 Q 100 184 126 178" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="clip papel-text-stage" data-start="0" data-duration="6.443" data-track-index="3">
+      <div class="papel-line papel-line-open" id="papel-line-open">
+        <span class="papel-word">a</span><span class="papel-word">vida</span><span class="papel-word">é</span><span class="papel-word">uma</span><span class="papel-word">peça</span><span class="papel-word">de</span><span class="papel-word">teatro</span>
+      </div>
+      <div class="papel-line papel-line-close" id="papel-line-close">
+        interprete <span class="papel-keyword" id="papel-keyword-bem">bem</span> o papel recebido
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var DURATION = 6.443;
+
+      // ================= Scene 1 (0.0–1.8s) — mask self-draws =================
+      var drawTargets = [
+        document.getElementById("papel-mask-outline"),
+        document.querySelector("#papel-eye-l .papel-mask-eye"),
+        document.querySelector("#papel-eye-r .papel-mask-eye"),
+        document.getElementById("papel-mask-mouth"),
+      ];
+      drawTargets.forEach(function (p) {
+        var len = p.getTotalLength();
+        p.style.strokeDasharray = String(len);
+        p.style.strokeDashoffset = String(len);
+      });
+
+      // face outline
+      tl.to(drawTargets[0], { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.15);
+      // eyes together, starting ~75% into the outline draw
+      tl.to(drawTargets[1], { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 0.525);
+      tl.to(drawTargets[2], { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 0.525);
+      // mouth, starting ~75% into the eyes draw
+      tl.to(drawTargets[3], { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 0.7875);
+
+      // tiny settle pop once the pen lifts
+      var maskWrap = document.querySelector(".papel-mask-wrap");
+      tl.fromTo(
+        maskWrap,
+        { scale: 1 },
+        { scale: 1.04, duration: 0.15, ease: "power1.out", yoyo: true, repeat: 1 },
+        1.1
+      );
+
+      // single subtle internal blink during the Scene 2 hold (svg-icon-enrichment)
+      var eyeL = document.getElementById("papel-eye-l");
+      var eyeR = document.getElementById("papel-eye-r");
+      var blinkState = { s: 1 };
+      function applyBlink() {
+        var s = blinkState.s;
+        eyeL.setAttribute("transform", "translate(78 95) scale(1 " + s + ") translate(-78 -95)");
+        eyeR.setAttribute("transform", "translate(122 95) scale(1 " + s + ") translate(-122 -95)");
+      }
+      applyBlink();
+      tl.to(
+        blinkState,
+        { s: 0.12, duration: 0.15, ease: "power1.inOut", yoyo: true, repeat: 1, onUpdate: applyBlink },
+        3.3
+      );
+
+      // ambient "holofote" breathing glow — subtle, finite, whole-frame
+      var spotlight = document.getElementById("papel-spotlight");
+      var spotState = { p: 0 };
+      tl.to(
+        spotState,
+        {
+          p: Math.PI * 2 * 2,
+          duration: DURATION,
+          ease: "none",
+          onUpdate: function () {
+            spotlight.style.opacity = String(0.55 + Math.sin(spotState.p) * 0.08);
+          },
+        },
+        0
+      );
+
+      // ================= Scene 2 (1.8–4.1s) — per-word reveal, long settle =================
+      var words = document.querySelectorAll("#papel-line-open .papel-word");
+      var WORD_START = 1.8;
+      var WORD_STAGGER = 0.12;
+      words.forEach(function (w, i) {
+        tl.fromTo(
+          w,
+          { opacity: 0, y: 16, filter: "blur(6px)" },
+          { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "power2.out" },
+          WORD_START + i * WORD_STAGGER
+        );
+      });
+
+      // ================= Scene 3 (4.1–6.443s) — flash word-swap, keyword glow, hold =================
+      var lineOpen = document.getElementById("papel-line-open");
+      var lineClose = document.getElementById("papel-line-close");
+
+      // opening line hard-clears (snap-out, not a lingering fade)
+      tl.fromTo(
+        lineOpen,
+        { opacity: 1, scale: 1 },
+        { opacity: 0, scale: 0.96, duration: 0.15, ease: "power1.in" },
+        4.1
+      );
+
+      // closing line flash-in (scale+blur slam)
+      tl.fromTo(
+        lineClose,
+        { opacity: 0, scale: 1.4, filter: "blur(14px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "power4.out" },
+        4.12
+      );
+
+      // "bem" keyword glow — single-word attack/sustain/release envelope (asr-keyword-glow)
+      var bemEl = document.getElementById("papel-keyword-bem");
+      var BEM_START = 4.57;
+      var BEM_END = 4.77;
+      var ATTACK = 0.15;
+      var RELEASE = 0.35;
+      var REST_LEVEL = 0.3;
+      var MAX_BLUR = 22;
+      var MAX_SCALE_BOOST = 0.08;
+      function bemEnvelope(t) {
+        if (t < BEM_START) return 0;
+        if (t < BEM_END) return Math.min((t - BEM_START) / ATTACK, 1);
+        var releaseEnd = BEM_END + RELEASE;
+        if (t < releaseEnd) return 1 - ((t - BEM_END) / RELEASE) * (1 - REST_LEVEL);
+        return REST_LEVEL;
+      }
+      var bemDriver = { t: 0 };
+      tl.to(
+        bemDriver,
+        {
+          t: DURATION,
+          duration: DURATION,
+          ease: "none",
+          onUpdate: function () {
+            var env = bemEnvelope(bemDriver.t);
+            bemEl.style.textShadow = "0 0 " + (MAX_BLUR * env).toFixed(1) + "px rgba(232,93,38," + (0.55 * env + 0.15).toFixed(2) + ")";
+            bemEl.style.transform = "scale(" + (1 + MAX_SCALE_BOOST * env).toFixed(3) + ")";
+          },
+        },
+        0
+      );
+
+      window.__timelines["09-papel"] = tl;
+    })();
+  </script>
+</template>

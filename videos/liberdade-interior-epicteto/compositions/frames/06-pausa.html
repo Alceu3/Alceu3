@@ -1,199 +1,204 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <template>
-      <style>
-        /* Root — styled by #root only (never a class on the data-composition-id element). */
-        #root {
-          position: absolute;
-          inset: 0;
-          overflow: hidden;
-          container-type: size;
-          font-family: sans-serif; /* generic-only: no font ships with this project (see note below) */
-        }
+<template>
+  <style>
+    /* Root — styled by #root only (never a class on the data-composition-id element). */
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      container-type: size;
+      font-family: sans-serif; /* generic-only: no font ships with this project — see note below */
+    }
 
-        /* No .woff2 files ship under assets/fonts/ or capture/assets/fonts/ in this project,
-           and frame.md's Barlow / IBM Plex Mono have no matching files here — per the
-           font_family_without_font_face rule, naming them without a real @font-face would
-           silently fall back at render. Generic `sans-serif` (always resolvable in headless
-           Chrome) carries the weight/tracking/lowercase treatment instead. */
+    /* No .woff2 files exist under assets/fonts/ or capture/assets/fonts/ in this project, and
+       frame.md's Barlow / IBM Plex Mono have no matching files here — per font_family_without_
+       font_face, naming them without a real @font-face would silently fall back at render.
+       Generic `sans-serif` (always resolvable in headless Chrome) carries the weight / tracking /
+       lowercase treatment instead of the named display face. */
 
-        #root .p06-bg {
-          background: #111111; /* ink-black ground, per frame.md */
-        }
+    #root .p06-bg {
+      background: #111111; /* ink-black ground, per frame.md */
+    }
 
-        .p06-stage {
-          display: block;
-        }
+    .p06-word {
+      position: absolute;
+      left: 18cqw;
+      top: 34cqh;
+      font-weight: 900;
+      font-size: 9.5cqw;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #e85d26; /* fire-orange */
+      text-transform: lowercase;
+      transform-origin: 0% 50%;
+      white-space: nowrap;
+    }
 
-        .p06-word {
-          position: absolute;
-          left: 18cqw;
-          top: 34cqh;
-          font-weight: 900;
-          font-size: 9.5cqw;
-          line-height: 1;
-          letter-spacing: -0.03em;
-          color: #e85d26; /* fire-orange */
-          text-transform: lowercase;
-          transform-origin: 0% 50%;
-          white-space: nowrap;
-        }
+    .p06-ember {
+      position: absolute;
+      left: 60cqw;
+      top: 15cqh;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #e85d26;
+      text-transform: lowercase;
+      white-space: nowrap;
+      text-shadow: 0 0 4.2cqw rgba(232, 93, 38, 0.55);
+      transform-origin: 30% 50%;
+    }
 
-        .p06-ember {
-          position: absolute;
-          left: 60cqw;
-          top: 15cqh;
-          font-weight: 900;
-          line-height: 1;
-          letter-spacing: -0.03em;
-          color: #e85d26;
-          text-transform: lowercase;
-          opacity: 0;
-          white-space: nowrap;
-          text-shadow: 0 0 4.2cqw rgba(232, 93, 38, 0.55);
-          transform-origin: 30% 50%;
-        }
+    .p06-rule {
+      position: absolute;
+      left: 18cqw;
+      top: 51cqh;
+      width: 1.9cqw;
+      height: 0.11cqw;
+      background: #e85d26;
+      transform-origin: 0% 50%;
+    }
 
-        .p06-rule {
-          position: absolute;
-          left: 18cqw;
-          top: 51cqh;
-          width: 1.9cqw;
-          height: 0.11cqw;
-          background: #e85d26;
-          transform: scaleX(0);
-          transform-origin: 0% 50%;
-        }
+    .p06-clause {
+      position: absolute;
+      left: 18cqw;
+      top: 55cqh;
+      width: 62cqw;
+      font-weight: 700;
+      font-size: 4.5cqw;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #f0ece5; /* cream */
+      text-transform: lowercase;
+    }
 
-        .p06-clause {
-          position: absolute;
-          left: 18cqw;
-          top: 55cqh;
-          width: 62cqw;
-          font-weight: 700;
-          font-size: 4.5cqw;
-          line-height: 1.15;
-          letter-spacing: -0.02em;
-          color: #f0ece5; /* cream */
-          text-transform: lowercase;
-        }
+    .p06-clause .p06-w {
+      display: inline-block;
+    }
 
-        .p06-clause .p06-w {
-          display: inline-block;
-          opacity: 0;
-          transform: translateY(0.4cqw);
-        }
+    .p06-clause .p06-w + .p06-w {
+      margin-left: 0.55cqw;
+    }
+  </style>
 
-        .p06-clause .p06-w + .p06-w {
-          margin-left: 0.55cqw;
-        }
-      </style>
+  <div id="root" data-composition-id="06-pausa" data-width="1920" data-height="1080">
+    <!-- full-bleed ground, its own clip layer per the core contract (never painted on #root) -->
+    <div
+      class="p06-bg clip"
+      data-start="0"
+      data-duration="8.213"
+      data-track-index="0"
+      style="position: absolute; inset: 0"
+    ></div>
 
-      <div id="root" data-composition-id="06-pausa" data-width="1920" data-height="1080">
-        <!-- full-bleed ground, dedicated clip layer per the core contract (never painted on #root) -->
-        <div
-          class="p06-bg clip"
-          data-start="0"
-          data-duration="8.213"
-          data-track-index="0"
-          style="position:absolute; inset:0;"
-        ></div>
+    <div
+      class="p06-stage clip"
+      data-start="0"
+      data-duration="8.213"
+      data-track-index="1"
+      style="position: absolute; inset: 0"
+    >
+      <!-- Scene 1 — the impulse itself: contained, steady, never leaves its anchor -->
+      <div id="p06-impulso" class="p06-word">impulso</div>
 
-        <div
-          class="p06-stage clip"
-          data-start="0"
-          data-duration="8.213"
-          data-track-index="1"
-          style="position:absolute; inset:0;"
+      <!-- Scene 2/3 — the fed counter-example: a tenuous duplicate that grows like an ember, then dissolves -->
+      <div id="p06-ember" class="p06-ember">impulso</div>
+
+      <!-- the pause itself, marked by the system's one ornament -->
+      <div id="p06-rule" class="p06-rule"></div>
+
+      <!-- Scene 4 — the payoff clause, revealed word by word under the now-quiet impulse -->
+      <div id="p06-clause" class="p06-clause">
+        <span class="p06-w">nessa</span><span class="p06-w">pausa,</span><span class="p06-w"
+          >o</span
+        ><span class="p06-w">caráter</span><span class="p06-w">se</span><span class="p06-w"
+          >forma.</span
         >
-          <!-- Scene 1 — the impulse itself: contained, steady, never leaves its anchor -->
-          <div id="p06-impulso" class="p06-word">impulso</div>
-
-          <!-- Scene 2/3 — the fed counter-example: a tenuous duplicate that grows like an ember, then dissolves -->
-          <div id="p06-ember" class="p06-ember">impulso</div>
-
-          <!-- the pause itself, marked by the system's one ornament -->
-          <div id="p06-rule" class="p06-rule"></div>
-
-          <!-- Scene 4 — the payoff clause, revealed word by word under the now-quiet impulse -->
-          <div id="p06-clause" class="p06-clause">
-            <span class="p06-w">nessa</span><span class="p06-w">pausa,</span><span class="p06-w"
-              >o</span
-            ><span class="p06-w">caráter</span><span class="p06-w">se</span><span class="p06-w"
-              >forma.</span
-            >
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
 
-      <script>
-        window.__timelines = window.__timelines || {};
-        const tl06 = gsap.timeline({ paused: true });
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl06 = gsap.timeline({ paused: true });
 
-        var p06Words = Array.prototype.slice.call(document.querySelectorAll("#p06-clause .p06-w"));
+    var p06Words = Array.prototype.slice.call(document.querySelectorAll("#p06-clause .p06-w"));
 
-        // ---- Scene 1 (0.0–2.2s) — "impulso" surges in: spring-pop entrance, smooth settle ----
-        // fromTo so t=0 under seek is correct; scale is the load-bearing axis (spring-pop-entrance).
-        tl06.fromTo(
-          "#p06-impulso",
-          { scale: 0.72, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" },
-          0.1,
-        );
+    // Lock every delayed-entrance element to its hidden/collapsed state AT t=0 —
+    // a GSAP tween that starts later than 0 does not touch the DOM before it starts,
+    // so without this the element would flash at its raw CSS state for the gap.
+    tl06.set("#p06-impulso", { opacity: 0, scale: 0.72 }, 0);
+    tl06.set("#p06-ember", { opacity: 0, fontSize: "5cqw" }, 0);
+    tl06.set("#p06-rule", { scaleX: 0 }, 0);
+    tl06.set(p06Words, { opacity: 0, y: "0.4cqw" }, 0);
 
-        // ---- Scene 2 (2.2–4.4s) — "mas escolhe alimentá-lo": a tenuous duplicate grows like an ember ----
-        // asymmetric 60/40 — the original stays anchored left, the fed duplicate claims the upper-right.
-        tl06.fromTo(
-          "#p06-ember",
-          { scale: 0.55, opacity: 0, fontSize: "5cqw" },
-          { scale: 1, opacity: 0.82, fontSize: "16.5cqw", duration: 2.0, ease: "sine.in" },
-          2.2,
-        );
+    // ---- Scene 1 (0.0–2.2s) — "impulso" surges in: spring-pop entrance, smooth settle ----
+    // fromTo mechanics per spring-pop-entrance: scale 0.72→1 is the load-bearing axis; hero
+    // must read by t ≤ 0.5s.
+    tl06.fromTo(
+      "#p06-impulso",
+      { scale: 0.72, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" },
+      0.05,
+    );
 
-        // ---- Scene 3 (4.4–6.0s) — "observá-lo passar": the duplicate dissolves and drifts off-frame ----
-        // the ORIGINAL impulse is untouched here — it holds static, small, contained.
-        tl06.to(
-          "#p06-ember",
-          { x: "10cqw", y: "-4cqh", opacity: 0, scale: 1.08, duration: 1.5, ease: "power1.in" },
-          4.4,
-        );
+    // ---- Scene 2 (2.2–4.4s) — "mas escolhe alimentá-lo": a tenuous duplicate grows like an ember ----
+    // asymmetric 60/40 — the original holds its left-side anchor, the fed duplicate claims the
+    // upper-right and swells past comfortable size (spilling toward the frame edge as it grows).
+    tl06.fromTo(
+      "#p06-ember",
+      { fontSize: "5cqw", opacity: 0 },
+      { fontSize: "16.5cqw", opacity: 0.82, duration: 2.0, ease: "sine.in" },
+      2.2,
+    );
 
-        // the pause itself: a single hairline draws open as the duplicate finishes leaving —
-        // the system's one ornament, marking the gap between stimulus and response.
-        tl06.fromTo(
-          "#p06-rule",
-          { scaleX: 0 },
-          { scaleX: 1, duration: 0.5, ease: "power2.out" },
-          5.6,
-        );
+    // ---- Scene 3 (4.4–6.0s) — "observá-lo passar": the duplicate dissolves and drifts off-frame ----
+    // the ORIGINAL impulse is untouched here — it holds static, small, contained.
+    tl06.to(
+      "#p06-ember",
+      { x: "12cqw", y: "-5cqh", scale: 1.12, opacity: 0, duration: 1.5, ease: "power1.in" },
+      4.4,
+    );
 
-        // ---- Scene 4 (6.0–8.213s) — "nessa pausa, o caráter se forma": per-word reveal, cream ----
-        var p06WordStart = 6.0;
-        var p06WordStep = 0.24;
-        p06Words.forEach(function (w, i) {
-          tl06.fromTo(
-            w,
-            { opacity: 0, y: "0.4cqw" },
-            { opacity: 1, y: "0cqw", duration: 0.32, ease: "power2.out" },
-            p06WordStart + i * p06WordStep,
-          );
-        });
+    // the pause itself: a single hairline draws open as the duplicate finishes leaving — the
+    // system's one ornament, marking the gap between stimulus and response.
+    tl06.fromTo("#p06-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 5.6);
 
-        // quiet hold: the frame settles — only a subtle, finite jitter on the now-still impulse word,
-        // never a repeat/yoyo loop (deterministic frame-by-frame seek).
-        var p06JitterStart = 7.5;
-        tl06
-          .to("#p06-impulso", { x: "0.08cqw", y: "-0.05cqh", duration: 0.24, ease: "sine.inOut" }, p06JitterStart)
-          .to("#p06-impulso", { x: "-0.05cqw", y: "0.06cqh", duration: 0.24, ease: "sine.inOut" }, p06JitterStart + 0.24)
-          .to("#p06-impulso", { x: "0.04cqw", y: "-0.03cqh", duration: 0.22, ease: "sine.inOut" }, p06JitterStart + 0.48)
-          .to("#p06-impulso", { x: "0cqw", y: "0cqh", duration: 0.2, ease: "sine.inOut" }, p06JitterStart + 0.7);
+    // ---- Scene 4 (6.0–8.213s) — "nessa pausa, o caráter se forma": per-word reveal, cream ----
+    var P06_WORD_START = 6.0;
+    var P06_WORD_STEP = 0.24;
+    p06Words.forEach(function (w, i) {
+      tl06.fromTo(
+        w,
+        { opacity: 0, y: "0.4cqw" },
+        { opacity: 1, y: "0cqw", duration: 0.32, ease: "power2.out" },
+        P06_WORD_START + i * P06_WORD_STEP,
+      );
+    });
 
-        window.__timelines["06-pausa"] = tl06;
-      </script>
-    </template>
-  </body>
-</html>
+    // quiet hold: the frame settles — only a subtle, finite jitter on the now-still impulse word,
+    // never a repeat/yoyo loop (the renderer seeks frame-by-frame, so motion must be fully authored).
+    var P06_JITTER_START = 7.5;
+    tl06
+      .to(
+        "#p06-impulso",
+        { x: "0.08cqw", y: "-0.05cqh", duration: 0.24, ease: "sine.inOut" },
+        P06_JITTER_START,
+      )
+      .to(
+        "#p06-impulso",
+        { x: "-0.05cqw", y: "0.06cqh", duration: 0.24, ease: "sine.inOut" },
+        P06_JITTER_START + 0.24,
+      )
+      .to(
+        "#p06-impulso",
+        { x: "0.04cqw", y: "-0.03cqh", duration: 0.22, ease: "sine.inOut" },
+        P06_JITTER_START + 0.48,
+      )
+      .to(
+        "#p06-impulso",
+        { x: "0cqw", y: "0cqh", duration: 0.2, ease: "sine.inOut" },
+        P06_JITTER_START + 0.7,
+      );
+
+    window.__timelines["06-pausa"] = tl06;
+  </script>
+</template>

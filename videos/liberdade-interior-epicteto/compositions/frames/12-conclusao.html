@@ -1,0 +1,350 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+    }
+
+    #root .clip {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* full-bleed ink-black ground — single register held the whole frame */
+    #root .fr12-bg {
+      background: #111111;
+      z-index: 0;
+    }
+
+    /* every scene is constrained to the caption keep-out band (top 896px of 1080) */
+    #root .fr12-scene {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 896px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 110px;
+      box-sizing: border-box;
+      z-index: 1;
+    }
+
+    #root .fr12-flash {
+      background: #f0ece5;
+      opacity: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    #root .fr12-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 34px;
+      width: 100%;
+    }
+
+    /* type ramp — no shipped Barlow/IBM Plex Mono files in this project (assets/fonts is
+       empty, confirmed against sibling frames), so the display role falls back to the
+       generic sans-serif keyword per house convention, carrying the design intent via
+       weight/size/tracking/lowercase instead of the specific typeface. */
+    #root .fr12-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: 0.4em;
+      row-gap: 0.12em;
+      font-family: sans-serif;
+      font-weight: 800;
+      text-transform: lowercase;
+      letter-spacing: -0.02em;
+      line-height: 1.26;
+      color: #f0ece5;
+      text-align: center;
+      max-width: 1500px;
+    }
+
+    #root .fr12-word {
+      display: inline-block;
+    }
+
+    #root .fr12-line-med {
+      font-size: 62px;
+    }
+
+    #root .fr12-line-support {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    #root .fr12-cardline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: 0.35em;
+      font-family: sans-serif;
+      text-transform: lowercase;
+      color: #e85d26;
+      text-align: center;
+    }
+
+    #root .fr12-cardline-a {
+      font-weight: 700;
+      font-size: 88px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    #root .fr12-cardline-b {
+      font-weight: 900;
+      font-size: 118px;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+  </style>
+
+  <div id="root" data-composition-id="12-conclusao">
+    <div class="clip fr12-bg" data-start="0" data-duration="12.48" data-track-index="0"></div>
+
+    <!-- Scene 1 (0.0–2.8s): per-word reveal, cream, medium scale, long settle -->
+    <div class="clip fr12-scene" data-start="0" data-duration="2.8" data-track-index="1">
+      <div class="fr12-line fr12-line-med">
+        <span class="fr12-word" id="fr12-w1-1">nenhum</span>
+        <span class="fr12-word" id="fr12-w1-2">desses</span>
+        <span class="fr12-word" id="fr12-w1-3">princípios</span>
+        <span class="fr12-word" id="fr12-w1-4">impede</span>
+        <span class="fr12-word" id="fr12-w1-5">que</span>
+        <span class="fr12-word" id="fr12-w1-6">coisas</span>
+        <span class="fr12-word" id="fr12-w1-7">difíceis</span>
+        <span class="fr12-word" id="fr12-w1-8">aconteçam</span>
+      </div>
+    </div>
+
+    <!-- Scene 2 (2.8–6.2s): hard-cut/flash word-swap; "sem se quebrar" isolated fire-orange via keyword glow -->
+    <div class="clip fr12-scene" data-start="2.8" data-duration="3.4" data-track-index="1">
+      <div class="fr12-line fr12-line-med">
+        <span class="fr12-word" id="fr12-w2-1">você</span>
+        <span class="fr12-word" id="fr12-w2-2">pode</span>
+        <span class="fr12-word" id="fr12-w2-3">atravessá-las</span>
+        <span class="fr12-word" id="fr12-w2-4">sem</span>
+        <span class="fr12-word" id="fr12-w2-5">se</span>
+        <span class="fr12-word" id="fr12-w2-6">quebrar</span>
+      </div>
+    </div>
+
+    <!-- Scene 3 (6.2–9.0s): recap line settles to support size; new line per-word reveal below -->
+    <div class="clip fr12-scene" data-start="6.2" data-duration="2.8" data-track-index="1">
+      <div class="fr12-stack">
+        <div class="fr12-line fr12-line-support" id="fr12-recap">
+          <span class="fr12-word">você</span>
+          <span class="fr12-word">pode</span>
+          <span class="fr12-word">atravessá-las</span>
+          <span class="fr12-word" style="color: #e85d26">sem</span>
+          <span class="fr12-word" style="color: #e85d26">se</span>
+          <span class="fr12-word" style="color: #e85d26">quebrar</span>
+        </div>
+        <div class="fr12-line fr12-line-med">
+          <span class="fr12-word" id="fr12-w3-1">sua</span>
+          <span class="fr12-word" id="fr12-w3-2">paz</span>
+          <span class="fr12-word" id="fr12-w3-3">nunca</span>
+          <span class="fr12-word" id="fr12-w3-4">dependeu</span>
+          <span class="fr12-word" id="fr12-w3-5">do</span>
+          <span class="fr12-word" id="fr12-w3-6">mundo</span>
+          <span class="fr12-word" id="fr12-w3-7">externo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene 4 (9.0–12.48s): hard-cut to final card — the real exit of the whole video -->
+    <div class="clip fr12-scene" data-start="9.0" data-duration="3.48" data-track-index="1">
+      <div class="fr12-stack" id="fr12-final-stack">
+        <div class="fr12-cardline fr12-cardline-a" id="fr12-line-a">sua mente é seu reino.</div>
+        <div class="fr12-cardline fr12-cardline-b" id="fr12-line-b">
+          <span class="fr12-word" id="fr12-wb-1">governe-a</span>
+          <span class="fr12-word" id="fr12-wb-2">com</span>
+          <span class="fr12-word" id="fr12-wb-3">sabedoria.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="clip fr12-flash" data-start="0" data-duration="12.48" data-track-index="3"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // ---- Scene 1 — per-word reveal, cream, long settle ----
+      var s1 = [
+        "fr12-w1-1",
+        "fr12-w1-2",
+        "fr12-w1-3",
+        "fr12-w1-4",
+        "fr12-w1-5",
+        "fr12-w1-6",
+        "fr12-w1-7",
+        "fr12-w1-8",
+      ];
+      s1.forEach(function (id, i) {
+        tl.fromTo(
+          "#" + id,
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+          0.1 + i * 0.16,
+        );
+      });
+      // holds static ~1.72–2.8s ("settle longo")
+
+      // ---- Scene 2 — flash word-swap hard cut (clip boundary), punctuated by a quick flash ----
+      tl.fromTo(
+        "#root .fr12-flash",
+        { opacity: 0 },
+        { opacity: 0.26, duration: 0.06, ease: "none" },
+        2.8,
+      );
+      tl.to("#root .fr12-flash", { opacity: 0, duration: 0.22, ease: "power1.out" }, 2.86);
+
+      // asr-keyword-glow (karaoke variant): "sem se quebrar" activate on an attack/sustain/release
+      // envelope over hand-authored windows, driven by ONE linear driver — never one tween per word.
+      var GLOW_TIMINGS = {
+        "fr12-w2-4": { start: 3.0, end: 3.25 },
+        "fr12-w2-5": { start: 3.25, end: 3.45 },
+        "fr12-w2-6": { start: 3.45, end: 4.0 }, // final word of the clause sustains longest
+      };
+      var ATTACK_DUR = 0.18,
+        RELEASE = 0.3,
+        REST_LEVEL = 0.12,
+        MAX_BLUR = 34,
+        MAX_SCALE_BOOST = 0.16;
+      var REST_RGB = { r: 240, g: 236, b: 229 }; // cream
+      var ACTIVE_RGB = { r: 232, g: 93, b: 38 }; // fire-orange
+
+      function envelope(t, start, end) {
+        if (t < start) return 0;
+        if (t < end) return Math.min((t - start) / ATTACK_DUR, 1);
+        var releaseEnd = end + RELEASE;
+        if (t < releaseEnd) return 1 - ((t - end) / RELEASE) * (1 - REST_LEVEL);
+        return REST_LEVEL;
+      }
+      function lerpChannel(a, b, k) {
+        return Math.round(a + (b - a) * k);
+      }
+
+      var glowEls = Object.keys(GLOW_TIMINGS).map(function (id) {
+        return document.getElementById(id);
+      });
+      var glowDriver = { t: 2.8 };
+      tl.to(
+        glowDriver,
+        {
+          t: 4.5,
+          duration: 1.7,
+          ease: "none", // linear — any other ease warps the per-word envelope
+          onUpdate: function () {
+            glowEls.forEach(function (el) {
+              var timing = GLOW_TIMINGS[el.id];
+              var env = envelope(glowDriver.t, timing.start, timing.end);
+              el.style.textShadow = "0 0 " + MAX_BLUR * env + "px rgba(232,93,38," + env + ")";
+              el.style.transform = "scale(" + (1 + MAX_SCALE_BOOST * env) + ")";
+              el.style.color =
+                "rgb(" +
+                lerpChannel(REST_RGB.r, ACTIVE_RGB.r, env) +
+                "," +
+                lerpChannel(REST_RGB.g, ACTIVE_RGB.g, env) +
+                "," +
+                lerpChannel(REST_RGB.b, ACTIVE_RGB.b, env) +
+                ")";
+            });
+          },
+        },
+        2.8,
+      );
+      // lock the emphasis clause fire-orange once the release completes — a clean held state,
+      // dwelling well over 1s before the scene-3 cut at 6.2s.
+      tl.set(glowEls, { color: "#e85d26", textShadow: "none", transform: "scale(1)" }, 4.5);
+
+      // ---- Scene 3 — recap settles to support size; new line per-word reveal below ----
+      tl.fromTo(
+        "#fr12-recap",
+        { opacity: 0, scale: 1.28, y: -6 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.38, ease: "power2.out" },
+        6.2,
+      );
+      var s3 = [
+        "fr12-w3-1",
+        "fr12-w3-2",
+        "fr12-w3-3",
+        "fr12-w3-4",
+        "fr12-w3-5",
+        "fr12-w3-6",
+        "fr12-w3-7",
+      ];
+      s3.forEach(function (id, i) {
+        tl.fromTo(
+          "#" + id,
+          { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+          6.5 + i * 0.16,
+        );
+      });
+      // holds static ~7.86–9.0s
+
+      // ---- Scene 4 — hard cut to final card (clip boundary), flash pulse, restrained settle,
+      // per-word assembly, then the TRUE EXIT: a still hold with only a subtle jitter ----
+      tl.fromTo(
+        "#root .fr12-flash",
+        { opacity: 0 },
+        { opacity: 0.3, duration: 0.06, ease: "none" },
+        9.0,
+      );
+      tl.to("#root .fr12-flash", { opacity: 0, duration: 0.24, ease: "power1.out" }, 9.06);
+
+      tl.fromTo(
+        "#fr12-line-a",
+        { opacity: 0, scale: 0.96 },
+        { opacity: 1, scale: 1, duration: 0.28, ease: "power2.out" },
+        9.0,
+      );
+
+      var sb = ["fr12-wb-1", "fr12-wb-2", "fr12-wb-3"];
+      sb.forEach(function (id, i) {
+        tl.fromTo(
+          "#" + id,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+          9.35 + i * 0.35,
+        );
+      });
+      // last word ("sabedoria.") settles at 10.5s
+
+      // subtle jitter only, across the final hold — no other movement, this is the video's real exit
+      var jitter = { p: 0 };
+      tl.to(
+        jitter,
+        {
+          p: Math.PI * 2 * 3,
+          duration: 12.48 - 10.5,
+          ease: "none",
+          onUpdate: function () {
+            var dx = Math.sin(jitter.p) * 1.4;
+            var dy = Math.cos(jitter.p * 1.3) * 1.0;
+            var el = document.getElementById("fr12-final-stack");
+            el.style.transform = "translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
+          },
+        },
+        10.5,
+      );
+
+      window.__timelines["12-conclusao"] = tl;
+    })();
+  </script>
+</template>

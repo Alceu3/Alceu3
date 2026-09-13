@@ -1,2 +1,4 @@
 .agents/
 .claude/
+videos/*/renders/work-*/
+videos/*/renders/.*-transaction-*/

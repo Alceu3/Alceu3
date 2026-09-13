@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "preferences": {
+    "destination": {
+      "value": "youtube",
+      "confirmed_in": [
+        "liberdade-interior-epicteto"
+      ],
+      "updated_at": "2026-09-13T14:23:45.755Z"
+    },
+    "aspect": {
+      "value": "1920x1080",
+      "confirmed_in": [
+        "liberdade-interior-epicteto"
+      ],
+      "updated_at": "2026-09-13T14:23:45.809Z"
+    },
+    "language": {
+      "value": "pt",
+      "confirmed_in": [
+        "liberdade-interior-epicteto"
+      ],
+      "updated_at": "2026-09-13T14:23:45.859Z"
+    },
+    "flow": {
+      "value": "automation",
+      "confirmed_in": [
+        "liberdade-interior-epicteto"
+      ],
+      "updated_at": "2026-09-13T14:23:45.907Z"
+    },
+    "storyboard": {
+      "value": "no",
+      "confirmed_in": [
+        "liberdade-interior-epicteto"
+      ],
+      "updated_at": "2026-09-13T14:23:45.956Z"
+    },
+    "style_preset.faceless-explainer": {
+      "value": "broadside",
+      "confirmed_in": [
+        "liberdade-interior-epicteto"
+      ],
+      "updated_at": "2026-09-13T14:24:53.340Z"
+    }
+  },
+  "sightings": {}
+}

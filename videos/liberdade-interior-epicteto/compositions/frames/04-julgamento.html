@@ -399,7 +399,12 @@
 
         // ---- Scene 5 (7.6-8.747s): scale-swap to "é julgamento", keyword glow, static hold ----
         tl.to("#jul04-payoff-a", { scale: 0.7, opacity: 0, duration: 0.35, ease: "power2.in" }, 7.6);
-        tl.to("#jul04-payoff-b", { scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.7)" }, 7.8);
+        tl.fromTo(
+          "#jul04-payoff-b",
+          { scale: 0.8, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.7)" },
+          7.8,
+        );
 
         (function () {
           var wordEl = document.getElementById("jul04-glow-word");

@@ -1,61 +1,6 @@
 {
-  "provider": "auto",
-  "speed": 1,
-  "lines": [
-    {
-      "id": "01",
-      "text": "Epicteto nasceu escravo. Viveu com o corpo debilitado. Foi exilado. E ainda assim, tornou-se um dos homens mais livres que já existiram."
-    },
-    {
-      "id": "02",
-      "text": "Como isso é possível? A liberdade não vem do que acontece com você — vem de como você decide se relacionar com o que acontece."
-    },
-    {
-      "id": "03",
-      "text": "Existem coisas sob seu controle — pensamentos, julgamentos, escolhas. E coisas que não estão — reputação, dinheiro, opinião dos outros. O sofrimento nasce de tratar como seu algo que não é."
-    },
-    {
-      "id": "04",
-      "text": "Duas pessoas perdem o emprego no mesmo dia. Uma desespera. A outra vê oportunidade. Não são os fatos que perturbam — é o julgamento sobre eles."
-    },
-    {
-      "id": "05",
-      "text": "Premeditatio malorum: antecipar mentalmente as adversidades. Não por medo — para nunca dar como garantido o que não é garantido."
-    },
-    {
-      "id": "06",
-      "text": "Você não escolhe o impulso inicial de medo ou raiva. Mas escolhe alimentá-lo — ou apenas observá-lo passar. Nessa pausa, o caráter se forma."
-    },
-    {
-      "id": "07",
-      "text": "Não explique sua filosofia. Incorpore-a. Julgue-se pelas suas ações — não pelas suas palavras."
-    },
-    {
-      "id": "08",
-      "text": "Quem te ofende age a partir da própria confusão sobre o que é bom e ruim. Recuse dar a essa pessoa o poder sobre seu estado interior."
-    },
-    {
-      "id": "09",
-      "text": "A vida é uma peça de teatro. Você não escolhe todos os papéis — mas deve interpretar bem o papel recebido."
-    },
-    {
-      "id": "10",
-      "text": "Como um arqueiro: você controla a mira e a técnica — não o vento que desvia a flecha. Desapegue-se do resultado. Comprometa-se com o esforço."
-    },
-    {
-      "id": "11",
-      "text": "Riqueza não é ter muito — é desejar pouco. E ninguém é livre se não é senhor de si mesmo. A liberdade estoica depende de onde você coloca seu valor."
-    },
-    {
-      "id": "12",
-      "text": "Nenhum desses princípios impede que coisas difíceis aconteçam. Mas você pode atravessá-las sem se quebrar — porque sua paz nunca dependeu inteiramente do mundo externo. Sua mente é seu reino. Governe-a com sabedoria."
-    }
-  ],
+  "lines": [],
   "bgm": {
-    "mode": "retrieve",
-    "query": "minimal piano/strings underscore, low and reflective",
-    "blob": "A liberdade não vem do que acontece com você — vem de como você decide se relacionar com o que acontece.",
-    "arc": "listicle"
-  },
-  "voice": "pm_alex"
+    "mode": "none"
+  }
 }

@@ -1,0 +1,251 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+    }
+
+    #root .clip {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* full-bleed grounds — hard-cut bg flip gated purely by data-start/data-duration */
+    #root .fr07-bg-cream {
+      background: #f0ece5;
+      z-index: 0;
+    }
+
+    #root .fr07-bg-dark {
+      background: #111111;
+      z-index: 0;
+    }
+
+    #root .fr07-scene {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    /* ---- Scene 1 — cream contrast beat ---- */
+    #root .fr07-s1-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    #root .fr07-s1-line {
+      display: flex;
+      gap: 0.32em;
+      font-family: sans-serif;
+      font-weight: 900;
+      font-size: 138px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      text-transform: lowercase;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    #root .fr07-s1-word {
+      display: inline-block;
+    }
+
+    #root .fr07-w-incorpore {
+      color: #e85d26;
+    }
+
+    /* ---- Scene 2 — dark payoff beat ---- */
+    #root .fr07-s2-row {
+      display: flex;
+      align-items: baseline;
+      gap: 34px;
+      font-family: sans-serif;
+      text-transform: lowercase;
+      white-space: nowrap;
+    }
+
+    #root .fr07-w-acoes {
+      display: inline-block;
+      font-weight: 900;
+      font-size: 184px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #e85d26;
+      transform-origin: 50% 60%;
+    }
+
+    #root .fr07-s2-small {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    #root .fr07-w-small {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: #f0ece5;
+    }
+
+    /* scribble strikethrough over "palavras" — css-marker-patterns, scribble mode */
+    #root .fr07-mh-scribble-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    #root .fr07-mh-scribble-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    #root .fr07-mh-scribble-svg {
+      position: absolute;
+      left: -4%;
+      top: 50%;
+      width: 108%;
+      height: 34px;
+      transform: translateY(-50%);
+      z-index: 0;
+      overflow: visible;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="07-acoes"
+   data-width="1920" data-height="1080" data-duration="5.983">
+    <div
+      class="clip fr07-bg-cream"
+      data-start="0"
+      data-duration="2.2"
+      data-track-index="0"
+    ></div>
+    <div
+      class="clip fr07-bg-dark"
+      data-start="2.2"
+      data-duration="3.783"
+      data-track-index="0"
+    ></div>
+
+    <!-- Scene 1 (0.0–2.2s): cream contrast beat — per-word reveal, "incorpore." isolated in fire-orange -->
+    <div
+      class="clip fr07-scene fr07-scene1"
+      data-start="0"
+      data-duration="2.2"
+      data-track-index="1"
+    >
+      <div class="fr07-s1-stack">
+        <div class="fr07-s1-line">
+          <span class="fr07-s1-word" id="fr07-w-nao">não</span>
+          <span class="fr07-s1-word" id="fr07-w-explique">explique.</span>
+        </div>
+        <div class="fr07-s1-line">
+          <span class="fr07-s1-word fr07-w-incorpore" id="fr07-w-incorpore">incorpore.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene 2 (2.2–5.483s): dark payoff beat — "ações," large fire-orange vs "não palavras" small cream, scribbled out -->
+    <div
+      class="clip fr07-scene fr07-scene2"
+      data-start="2.2"
+      data-duration="3.783"
+      data-track-index="1"
+    >
+      <div class="fr07-s2-row">
+        <span class="fr07-w-acoes" id="fr07-w-acoes">ações,</span>
+        <span class="fr07-s2-small">
+          <span class="fr07-w-small" id="fr07-w-nao2">não</span>
+          <span class="fr07-mh-scribble-wrap" id="fr07-palavras-wrap">
+            <span class="fr07-w-small fr07-mh-scribble-text" id="fr07-w-palavras">palavras</span>
+            <svg class="fr07-mh-scribble-svg" viewBox="0 0 500 24" preserveAspectRatio="none">
+              <path
+                id="fr07-scribble-path"
+                d="M0,12 Q31,0 62,12 Q93,24 125,12 Q156,0 187,12 Q218,24 250,12 Q281,0 312,12 Q343,24 375,12 Q406,0 437,12 Q468,24 500,12"
+                fill="none"
+                stroke="#e85d26"
+                stroke-width="5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script src="gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 — per-word reveal in ink-black, "incorpore." isolated in fire-orange, then a long settle.
+      tl.fromTo(
+        "#fr07-w-nao",
+        { opacity: 0, y: 26 },
+        { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" },
+        0.1,
+      );
+      tl.fromTo(
+        "#fr07-w-explique",
+        { opacity: 0, y: 26 },
+        { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" },
+        0.32,
+      );
+      tl.fromTo(
+        "#fr07-w-incorpore",
+        { opacity: 0, y: 26, scale: 0.85 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.6)" },
+        0.62,
+      );
+      // holds static 0.62–2.2s ("settle longo")
+
+      // Scene 2 — flash word-swap payoff: "ações," pops big in fire-orange; "não palavras" arrives small in cream.
+      tl.fromTo(
+        "#fr07-w-acoes",
+        { opacity: 0, scale: 0.72 },
+        { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" },
+        2.3,
+      );
+      tl.fromTo(
+        "#fr07-w-nao2",
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" },
+        2.55,
+      );
+      tl.fromTo(
+        "#fr07-w-palavras",
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" },
+        2.72,
+      );
+
+      // Scribble draws across "palavras" as the payoff mark, then the frame holds static to the end.
+      var scribblePath = document.getElementById("fr07-scribble-path");
+      var scribbleLen = scribblePath.getTotalLength();
+      gsap.set(scribblePath, {
+        strokeDasharray: scribbleLen,
+        strokeDashoffset: scribbleLen,
+      });
+      tl.to(
+        scribblePath,
+        { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" },
+        3.3,
+      );
+      // holds static 4.1–5.483s ("mantém-se estática")
+
+      window.__timelines["07-acoes"] = tl;
+    })();
+  </script>
+</template>

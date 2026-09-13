@@ -1,0 +1,363 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      color: #f0ece5;
+      font-family: sans-serif;
+    }
+
+    .clip {
+      position: absolute;
+      inset: 0;
+    }
+
+    .outros08-bg {
+      background: #111111;
+    }
+
+    .outros08-stage {
+      pointer-events: none;
+    }
+
+    /* ── boundary hairline — the fronteira between chaos and calm ── */
+    .outros08-boundary {
+      position: absolute;
+      left: 760px;
+      top: 220px;
+      width: 2px;
+      height: 560px;
+      background: #e85d26;
+      opacity: 0;
+    }
+
+    /* ── left zone: ofende / confusão — contained, never crosses ── */
+    .outros08-chaos {
+      position: absolute;
+      left: 106px;
+      top: 260px;
+      width: 620px;
+      height: 480px;
+      perspective: 1500px;
+    }
+
+    .outros08-badge {
+      position: absolute;
+      left: 0;
+      top: 80px;
+      display: inline-block;
+      padding: 30px 40px;
+      background: #e85d26;
+      clip-path: polygon(
+        3% 18%, 14% 2%, 40% 8%, 63% 0%, 85% 10%, 100% 26%,
+        94% 52%, 100% 78%, 82% 96%, 55% 100%, 30% 92%, 10% 100%,
+        0% 72%, 8% 45%
+      );
+      transform-origin: 50% 50%;
+      opacity: 0;
+    }
+
+    .outros08-badge-label {
+      display: block;
+      font-size: 100px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      text-transform: lowercase;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    .outros08-confusao {
+      position: absolute;
+      left: 10px;
+      top: 300px;
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 60px;
+      letter-spacing: 0.02em;
+      color: #888880;
+      opacity: 0;
+    }
+
+    .outros08-hghost {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      inset: 0 auto auto 0;
+    }
+
+    .outros08-hchar {
+      display: inline-block;
+      transform-origin: bottom;
+      transform-style: preserve-3d;
+      opacity: 0;
+    }
+
+    /* ── right zone: recuse / estado interior — calm, static ── */
+    .outros08-calm {
+      position: absolute;
+      left: 800px;
+      top: 300px;
+      width: 1020px;
+    }
+
+    .outros08-calm-lines {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
+      color: #f0ece5;
+    }
+
+    .outros08-word {
+      display: inline-block;
+      margin-right: 0.32em;
+      opacity: 0;
+    }
+
+    .outros08-word--accent {
+      color: #e85d26;
+    }
+
+    .outros08-final-wrap {
+      position: relative;
+      width: 1020px;
+      margin-top: 56px;
+    }
+
+    .outros08-glow {
+      position: absolute;
+      inset: -160px -80px;
+      z-index: 1;
+      background: radial-gradient(closest-side, rgba(232, 93, 38, 0.55), rgba(232, 93, 38, 0) 70%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .outros08-final {
+      position: relative;
+      z-index: 2;
+      font-size: 92px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: lowercase;
+      color: #e85d26;
+      opacity: 0;
+    }
+  </style>
+
+  <div id="root" data-composition-id="08-outros" data-width="1920" data-height="1080" data-start="0" data-duration="8.18">
+    <div class="clip outros08-bg" data-start="0" data-duration="8.18" data-track-index="0"></div>
+
+    <div class="clip outros08-stage" data-start="0" data-duration="8.18" data-track-index="1">
+      <div class="outros08-boundary" id="outros08-boundary"></div>
+
+      <div class="outros08-chaos" id="outros08-chaos">
+        <div class="outros08-badge" id="outros08-badge">
+          <span class="outros08-badge-label">ofende</span>
+        </div>
+        <div class="outros08-confusao" id="outros08-confusao"></div>
+      </div>
+
+      <div class="outros08-calm">
+        <div class="outros08-calm-lines" id="outros08-calm-lines">
+          <span class="outros08-word" data-i="0">recuse</span>
+          <span class="outros08-word" data-i="1">dar</span>
+          <span class="outros08-word" data-i="2">a</span>
+          <span class="outros08-word" data-i="3">essa</span>
+          <span class="outros08-word" data-i="4">pessoa</span>
+          <span class="outros08-word" data-i="5">o</span>
+          <span class="outros08-word outros08-word--accent" data-i="6">poder</span>
+        </div>
+        <div class="outros08-final-wrap">
+          <div class="outros08-glow" id="outros08-glow"></div>
+          <div class="outros08-final" id="outros08-final">seu estado interior</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      const TOTAL_DURATION = 7.68;
+
+      // ── boundary hairline: fades in, flares at the jab's peak, settles ──
+      const boundary = document.getElementById("outros08-boundary");
+      tl.fromTo(boundary, { opacity: 0 }, { opacity: 0.26, duration: 0.4, ease: "power2.out" }, 0);
+      tl.to(boundary, { opacity: 0.62, duration: 0.12, ease: "power1.out" }, 0.37);
+      tl.to(boundary, { opacity: 0.26, duration: 0.35, ease: "power2.out" }, 0.49);
+
+      // ── Scene 1 (0.0–1.8s): "ofende" jabs in from the left edge, ──
+      // overshoots toward center, then recoils to a contained rest —
+      // the jab that visibly fails to cross the boundary.
+      const badge = document.getElementById("outros08-badge");
+      tl.fromTo(
+        badge,
+        { x: -520, opacity: 0, rotation: -8 },
+        { x: 36, opacity: 1, rotation: 3, duration: 0.32, ease: "power4.out" },
+        0.05,
+      );
+      tl.to(badge, { x: 0, rotation: 0, duration: 0.35, ease: "power2.out" }, 0.37);
+
+      // Scene 1→2 seam: a small glitch tremor, then the mark dissolves.
+      tl.to(badge, { x: "+=6", duration: 0.05, ease: "none" }, 1.5);
+      tl.to(badge, { x: "-=10", duration: 0.05, ease: "none" }, 1.55);
+      tl.to(badge, { x: "+=4", duration: 0.05, ease: "none" }, 1.6);
+      tl.to(badge, { opacity: 0, scale: 0.85, duration: 0.25, ease: "power2.in" }, 1.65);
+
+      // ── Scene 2 (1.8–4.1s): "confusão" decodes in — 3D char flip, ──
+      // discreet, contained, never reaching the boundary.
+      const confusaoWrap = document.getElementById("outros08-confusao");
+      const HACKER_TARGET = "confusão";
+      const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*";
+      const HACKER_START = 1.8;
+      const FLIP_DURATION = 0.5;
+      const CHAR_STAGGER = 0.05;
+      const REVEAL_THRESHOLD = 0.6;
+
+      tl.set(confusaoWrap, { opacity: 1 }, HACKER_START);
+
+      const ghost = document.createElement("div");
+      ghost.className = "outros08-hghost";
+      ghost.textContent = HACKER_TARGET;
+      confusaoWrap.appendChild(ghost);
+
+      const charEls = [];
+      for (let i = 0; i < HACKER_TARGET.length; i++) {
+        const ch = HACKER_TARGET[i];
+        const span = document.createElement("span");
+        span.className = "outros08-hchar";
+        span.textContent = ch === " " ? " " : ch;
+        span.setAttribute("data-target", ch);
+        confusaoWrap.appendChild(span);
+        charEls.push(span);
+      }
+
+      function pseudoGlyph(seed) {
+        const h = ((seed * 9301 + 49297) % 233280) / 233280;
+        return GLYPHS[Math.floor(h * GLYPHS.length)];
+      }
+
+      charEls.forEach((el, i) => {
+        const state = { p: 0 };
+        tl.to(
+          state,
+          {
+            p: 1,
+            duration: FLIP_DURATION,
+            ease: "power3.out",
+            onUpdate: () => {
+              if (state.p < REVEAL_THRESHOLD) {
+                el.textContent = pseudoGlyph(i * 1000 + Math.floor(state.p * 100));
+              } else {
+                const t = el.getAttribute("data-target");
+                el.textContent = t === " " ? " " : t;
+              }
+              el.style.transform = "rotateX(" + (90 - state.p * 90) + "deg)";
+              el.style.opacity = String(Math.min(1, state.p * 2));
+            },
+          },
+          HACKER_START + i * CHAR_STAGGER,
+        );
+      });
+
+      // Bounded lingering flicker — the confusion stays contained and quiet
+      // for the rest of the shot while the calm side builds on the right.
+      const DECODE_END = HACKER_START + (charEls.length - 1) * CHAR_STAGGER + FLIP_DURATION;
+      const FLICKER_START = DECODE_END + 0.05;
+      const FLICKER_DUR = Math.max(0, TOTAL_DURATION - FLICKER_START);
+      if (FLICKER_DUR > 0) {
+        const flickerPhase = { p: 0 };
+        tl.to(
+          flickerPhase,
+          {
+            p: Math.PI * 2 * 2.3,
+            duration: FLICKER_DUR,
+            ease: "none",
+            onUpdate: () => {
+              const s = Math.sin(flickerPhase.p);
+              confusaoWrap.style.opacity = String(0.82 + s * 0.08);
+            },
+          },
+          FLICKER_START,
+        );
+      }
+
+      // ── Scene 3 (4.1–5.9s): "recuse dar a essa pessoa o poder" ──
+      // lands per word, calm and static, against the chaos on the left.
+      const words = Array.from(document.querySelectorAll(".outros08-word"));
+      const CALM_WORDS_START = 4.0;
+      const CALM_WORD_STAGGER = 0.13;
+      words.forEach((word, i) => {
+        tl.fromTo(
+          word,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+          CALM_WORDS_START + i * CALM_WORD_STAGGER,
+        );
+      });
+
+      // ── Scene 4 (5.9–7.7s): "seu estado interior" settles in fire-orange, ──
+      // glow blooms in behind it as one beat, then a bounded, subtle jitter.
+      const finalEl = document.getElementById("outros08-final");
+      const glowEl = document.getElementById("outros08-glow");
+      const FINAL_START = 5.55;
+      const FINAL_DUR = 0.45;
+
+      tl.fromTo(
+        finalEl,
+        { opacity: 0, scale: 0.92, y: 10 },
+        { opacity: 1, scale: 1, y: 0, duration: FINAL_DUR, ease: "power3.out" },
+        FINAL_START,
+      );
+      tl.fromTo(
+        glowEl,
+        { opacity: 0, scale: 0.85 },
+        { opacity: 0.32, scale: 1, duration: FINAL_DUR, ease: "power2.out" },
+        FINAL_START,
+      );
+
+      const settleAt = FINAL_START + FINAL_DUR;
+      const breatheDur = Math.max(0, TOTAL_DURATION - settleAt);
+      if (breatheDur > 0) {
+        const glowPhase = { p: 0 };
+        tl.to(
+          glowPhase,
+          {
+            p: Math.PI * 2 * (breatheDur / 2.8),
+            duration: breatheDur,
+            ease: "none",
+            onUpdate: () => {
+              const s = Math.sin(glowPhase.p);
+              gsap.set(glowEl, { opacity: 0.32 + s * 0.04, scale: 1 + s * 0.02 });
+            },
+          },
+          settleAt,
+        );
+
+        const finalPhase = { p: 0 };
+        tl.to(
+          finalPhase,
+          {
+            p: Math.PI * 2 * (breatheDur / 1.4),
+            duration: breatheDur,
+            ease: "none",
+            onUpdate: () => {
+              const c = Math.cos(finalPhase.p);
+              gsap.set(finalEl, { y: c * 2 });
+            },
+          },
+          settleAt,
+        );
+      }
+
+      window.__timelines["08-outros"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #F0ECE5;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="99.585"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div
+        id="el-01-abertura"
+        class="scene"
+        data-composition-id="01-abertura"
+        data-composition-src="compositions/frames/01-abertura.html"
+        data-start="0"
+        data-duration="8.415"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-01-abertura-voice"
+        src="assets/voice/01.wav"
+        data-start="0"
+        data-duration="7.915"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-02-tese"
+        class="scene"
+        data-composition-id="02-tese"
+        data-composition-src="compositions/frames/02-tese.html"
+        data-start="7.915"
+        data-duration="7.86"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-02-tese-voice"
+        src="assets/voice/02.wav"
+        data-start="7.915"
+        data-duration="7.36"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-03-controle"
+        class="scene"
+        data-composition-id="03-controle"
+        data-composition-src="compositions/frames/03-controle.html"
+        data-start="15.275"
+        data-duration="11.465"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-03-controle-voice"
+        src="assets/voice/03.wav"
+        data-start="15.275"
+        data-duration="10.965"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-04-julgamento"
+        class="scene"
+        data-composition-id="04-julgamento"
+        data-composition-src="compositions/frames/04-julgamento.html"
+        data-start="26.240000000000002"
+        data-duration="9.247"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-04-julgamento-voice"
+        src="assets/voice/04.wav"
+        data-start="26.240000000000002"
+        data-duration="8.747"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-05-premeditatio"
+        class="scene"
+        data-composition-id="05-premeditatio"
+        data-composition-src="compositions/frames/05-premeditatio.html"
+        data-start="34.987"
+        data-duration="8.244"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-05-premeditatio-voice"
+        src="assets/voice/05.wav"
+        data-start="34.987"
+        data-duration="7.744"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-06-pausa"
+        class="scene"
+        data-composition-id="06-pausa"
+        data-composition-src="compositions/frames/06-pausa.html"
+        data-start="42.731"
+        data-duration="8.713"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-06-pausa-voice"
+        src="assets/voice/06.wav"
+        data-start="42.731"
+        data-duration="8.213"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-07-acoes"
+        class="scene"
+        data-composition-id="07-acoes"
+        data-composition-src="compositions/frames/07-acoes.html"
+        data-start="50.944"
+        data-duration="5.983"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-07-acoes-voice"
+        src="assets/voice/07.wav"
+        data-start="50.944"
+        data-duration="5.483"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-08-outros"
+        class="scene"
+        data-composition-id="08-outros"
+        data-composition-src="compositions/frames/08-outros.html"
+        data-start="56.427"
+        data-duration="8.18"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-08-outros-voice"
+        src="assets/voice/08.wav"
+        data-start="56.427"
+        data-duration="7.68"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-09-papel"
+        class="scene"
+        data-composition-id="09-papel"
+        data-composition-src="compositions/frames/09-papel.html"
+        data-start="64.107"
+        data-duration="6.943"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-09-papel-voice"
+        src="assets/voice/09.wav"
+        data-start="64.107"
+        data-duration="6.443"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-10-arqueiro"
+        class="scene"
+        data-composition-id="10-arqueiro"
+        data-composition-src="compositions/frames/10-arqueiro.html"
+        data-start="70.55"
+        data-duration="8.372"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-10-arqueiro-voice"
+        src="assets/voice/10.wav"
+        data-start="70.55"
+        data-duration="7.872"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-11-riqueza-liberdade"
+        class="scene"
+        data-composition-id="11-riqueza-liberdade"
+        data-composition-src="compositions/frames/11-riqueza-liberdade.html"
+        data-start="78.422"
+        data-duration="9.183"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-11-riqueza-liberdade-voice"
+        src="assets/voice/11.wav"
+        data-start="78.422"
+        data-duration="8.683"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-12-conclusao"
+        class="scene"
+        data-composition-id="12-conclusao"
+        data-composition-src="compositions/frames/12-conclusao.html"
+        data-start="87.10499999999999"
+        data-duration="12.48"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-12-conclusao-voice"
+        src="assets/voice/12.wav"
+        data-start="87.10499999999999"
+        data-duration="12.48"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-abertura", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 7.915);
+        tl.fromTo("#el-02-tese", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 7.915);
+        tl.to("#el-02-tese", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 15.275);
+        tl.fromTo("#el-03-controle", { y: 1080, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 15.275);
+        tl.to("#el-03-controle", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 26.24);
+        tl.fromTo("#el-04-julgamento", { y: 1080, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 26.24);
+        tl.to("#el-04-julgamento", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 34.987);
+        tl.fromTo("#el-05-premeditatio", { y: 1080, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 34.987);
+        tl.to("#el-05-premeditatio", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 42.731);
+        tl.fromTo("#el-06-pausa", { y: 1080, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 42.731);
+        tl.to("#el-06-pausa", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 50.944);
+        tl.fromTo("#el-07-acoes", { y: 1080, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 50.944);
+        tl.to("#el-07-acoes", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 56.427);
+        tl.fromTo("#el-08-outros", { y: 1080, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 56.427);
+        tl.to("#el-08-outros", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 64.107);
+        tl.fromTo("#el-09-papel", { y: 1080, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 64.107);
+        tl.to("#el-09-papel", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 70.55);
+        tl.fromTo("#el-10-arqueiro", { y: 1080, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 70.55);
+        tl.to("#el-10-arqueiro", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 78.422);
+        tl.fromTo("#el-11-riqueza-liberdade", { y: 1080, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 78.422);
+        tl.to("#el-11-riqueza-liberdade", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 87.105);
+        tl.fromTo("#el-12-conclusao", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 87.105);
+        tl.to({}, { duration: 99.585 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
+    </script>
+  </body>
+</html>

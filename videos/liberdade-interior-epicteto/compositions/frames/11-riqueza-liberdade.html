@@ -1,0 +1,371 @@
+<template>
+<style>
+  #root {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    container-type: size;
+    --ink: #111111;
+    --cream: #F0ECE5;
+    --cream-muted: #888880;
+    --cream-hint: #505048;
+    --orange: #E85D26;
+    --border: #282826;
+    --font-display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "Courier New", ui-monospace, "SFMono-Regular", monospace;
+  }
+
+  #root .clip { position: absolute; inset: 0; }
+
+  #root .rl11-bg {
+    background: var(--ink);
+  }
+
+  #root .rl11-kicker {
+    position: absolute;
+    left: 100px;
+    top: 66px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.85cqw;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream-hint);
+    opacity: 0;
+  }
+
+  #root .rl11-glow {
+    position: absolute;
+    left: 894px;
+    top: 26px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle,
+      rgba(232, 93, 38, 0.95) 0%,
+      rgba(232, 93, 38, 0.45) 38%,
+      rgba(232, 93, 38, 0) 72%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #root .rl11-balance-wrap {
+    position: absolute;
+    left: 50%;
+    margin-left: -310px;
+    top: 130px;
+    width: 620px;
+    height: 446px;
+  }
+
+  #root .rl11-balance-wrap svg { display: block; width: 100%; height: 100%; }
+
+  #root .rl11-line {
+    fill: none;
+    stroke: var(--cream);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  #root #rl11-beam-group {
+    transform-box: view-box;
+    transform-origin: 320px 70px;
+  }
+
+  #root .rl11-pivot-cap {
+    fill: var(--cream);
+    stroke: none;
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+  }
+
+  #root .rl11-tile-chip { stroke: none; }
+  #root .rl11-tile-left { fill: var(--cream); }
+  #root .rl11-tile-right { fill: var(--orange); }
+
+  #root .rl11-tile-label {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 27px;
+    fill: var(--ink);
+    text-anchor: middle;
+    letter-spacing: -0.01em;
+  }
+
+  #root #rl11-left-tile-drop,
+  #root #rl11-right-tile-drop {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+  }
+
+  #root .rl11-text-band {
+    position: absolute;
+    left: 50%;
+    margin-left: -750px;
+    top: 606px;
+    width: 1500px;
+    height: 260px;
+  }
+
+  #root .rl11-band-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 50% 50%;
+  }
+
+  #root .rl11-sentence-line {
+    flex-wrap: wrap;
+    gap: 0.6cqw 0.9cqw;
+    row-gap: 10px;
+    padding: 0 2cqw;
+  }
+
+  #root .rl11-cascade-word {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 3.0cqw;
+    line-height: 1.25;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    text-transform: lowercase;
+    opacity: 0;
+    display: inline-block;
+  }
+
+  #root .rl11-swap-line {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #root .rl11-swap-lead {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.7cqw;
+    color: var(--cream);
+    text-transform: lowercase;
+    letter-spacing: 0;
+  }
+
+  #root .rl11-swap-hero {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 6.2cqw;
+    color: var(--orange);
+    text-transform: lowercase;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    transform-origin: 50% 50%;
+  }
+</style>
+
+<div id="root" data-composition-id="11-riqueza-liberdade">
+
+  <div class="clip rl11-bg" data-start="0" data-duration="8.683" data-track-index="0"></div>
+
+  <div class="clip" data-start="0" data-duration="8.683" data-track-index="1">
+    <div class="rl11-kicker" id="rl11-kicker">09&mdash;10</div>
+
+    <div class="rl11-glow" id="rl11-glow"></div>
+
+    <div class="rl11-balance-wrap">
+      <svg viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg">
+        <g id="rl11-beam-group">
+          <path id="rl11-stand-path" class="rl11-line" d="M320,70 L320,390 M255,390 L385,390"></path>
+          <path id="rl11-beam-line" class="rl11-line" d="M130,70 L510,70"></path>
+          <circle class="rl11-pivot-cap" cx="320" cy="70" r="9"></circle>
+
+          <g id="rl11-left-arm">
+            <path id="rl11-left-armpan" class="rl11-line" d="M140,70 L140,150 M60,150 L220,150"></path>
+            <g id="rl11-left-tile-drop">
+              <rect class="rl11-tile-chip rl11-tile-left" x="70" y="104" width="140" height="46"></rect>
+              <text class="rl11-tile-label" x="140" y="133">ter muito</text>
+            </g>
+          </g>
+
+          <g id="rl11-right-arm">
+            <path id="rl11-right-armpan" class="rl11-line" d="M500,70 L500,150 M395,150 L605,150"></path>
+            <g id="rl11-right-tile-drop">
+              <rect class="rl11-tile-chip rl11-tile-right" x="405" y="104" width="190" height="46"></rect>
+              <text class="rl11-tile-label" x="500" y="133">desejar pouco</text>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="rl11-text-band">
+      <div class="rl11-band-inner rl11-sentence-line" id="rl11-sentence-line">
+        <span class="rl11-cascade-word" id="rl11-w0">ningu&eacute;m</span>
+        <span class="rl11-cascade-word" id="rl11-w1">&eacute;</span>
+        <span class="rl11-cascade-word" id="rl11-w2">livre</span>
+        <span class="rl11-cascade-word" id="rl11-w3">se</span>
+        <span class="rl11-cascade-word" id="rl11-w4">n&atilde;o</span>
+        <span class="rl11-cascade-word" id="rl11-w5">&eacute;</span>
+        <span class="rl11-cascade-word" id="rl11-w6">senhor</span>
+        <span class="rl11-cascade-word" id="rl11-w7">de</span>
+        <span class="rl11-cascade-word" id="rl11-w8">si</span>
+        <span class="rl11-cascade-word" id="rl11-w9">mesmo</span>
+      </div>
+      <div class="rl11-band-inner rl11-swap-line" id="rl11-swap-line">
+        <span class="rl11-swap-lead">coloca seu</span>
+        <span class="rl11-swap-hero" id="rl11-valor-word">valor</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+(function () {
+  var root = document.getElementById("root");
+
+  // ---- measure + arm the SVG draw paths (never guess the length) ----
+  var drawPaths = root.querySelectorAll("#rl11-stand-path, #rl11-beam-line, #rl11-left-armpan, #rl11-right-armpan");
+  drawPaths.forEach(function (p) {
+    var len = p.getTotalLength();
+    p.style.strokeDasharray = String(len);
+    p.style.strokeDashoffset = String(len);
+  });
+
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var F = 1 / 60;
+
+  // =========================================================
+  // Scene 1 (0.0-1.6s) — balance self-draws, centered
+  // =========================================================
+  tl.fromTo("#rl11-kicker", { opacity: 0 }, { opacity: 0.35, duration: 0.4, ease: "power1.out" }, 0.1);
+
+  tl.to("#rl11-stand-path", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 0.15);
+  tl.to("#rl11-beam-line", { strokeDashoffset: 0, duration: 0.30, ease: "power2.out" }, 0.4125);
+  tl.to("#rl11-left-armpan", { strokeDashoffset: 0, duration: 0.28, ease: "power2.out" }, 0.6375);
+  tl.to("#rl11-right-armpan", { strokeDashoffset: 0, duration: 0.28, ease: "power2.out" }, 0.8475);
+  tl.fromTo(".rl11-pivot-cap", { scale: 0 }, { scale: 1, duration: 0.18, ease: "back.out(1.6)" }, 1.05);
+
+  // =========================================================
+  // Scene 2 (1.6-3.3s) — "ter muito" falls onto the left pan, pan tilts
+  // =========================================================
+  tl.fromTo(
+    "#rl11-left-tile-drop",
+    { y: -260, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.42, ease: "power2.in" },
+    1.6
+  );
+  tl.to("#rl11-left-tile-drop", { scaleY: 0.85, scaleX: 1.08, duration: 0.08, ease: "power1.out" }, 2.02);
+  tl.to("#rl11-left-tile-drop", { scaleY: 1, scaleX: 1, duration: 0.22, ease: "back.out(1.6)" }, 2.10);
+  tl.to("#rl11-beam-group", { rotation: -7, duration: 0.4, ease: "power2.out" }, 2.10);
+
+  // =========================================================
+  // Scene 3 (3.3-4.9s) — "desejar pouco" falls onto the right pan;
+  // right side settles, becomes dominant, gains a soft glow
+  // =========================================================
+  tl.fromTo(
+    "#rl11-right-tile-drop",
+    { y: -260, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.42, ease: "power2.in" },
+    3.3
+  );
+  tl.to("#rl11-right-tile-drop", { scaleY: 0.85, scaleX: 1.08, duration: 0.08, ease: "power1.out" }, 3.72);
+  tl.to("#rl11-right-tile-drop", { scaleY: 1, scaleX: 1, duration: 0.22, ease: "back.out(1.6)" }, 3.80);
+  tl.to("#rl11-beam-group", { rotation: 7, duration: 0.42, ease: "power2.out" }, 3.80);
+
+  tl.fromTo(
+    "#rl11-glow",
+    { opacity: 0, scale: 0.85 },
+    { opacity: 0.30, scale: 1, duration: 0.55, ease: "power2.out" },
+    3.85
+  );
+  (function () {
+    var glow = document.getElementById("rl11-glow");
+    var phase = { p: 0 };
+    var BLOOM_END = 3.85 + 0.55;
+    var IDLE_DUR = 8.683 - BLOOM_END;
+    var PEAK = 0.30, AMP_O = 0.02, AMP_S = 0.012;
+    tl.to(
+      phase,
+      {
+        p: Math.PI * 2 * 1.6,
+        duration: IDLE_DUR,
+        ease: "none",
+        onUpdate: function () {
+          var s = Math.sin(phase.p);
+          glow.style.opacity = String(PEAK + s * AMP_O);
+          glow.style.transform = "scale(" + (1 + s * AMP_S) + ")";
+        },
+      },
+      BLOOM_END
+    );
+  })();
+
+  // =========================================================
+  // Scene 4 (4.9-7.1s) — "ninguem e livre se nao e senhor de si mesmo"
+  // per-word reveal under the balance, cream, full-width band
+  // =========================================================
+  var words = [
+    { id: "#rl11-w0", t: 4.90, y: 70, d: 0.20 },
+    { id: "#rl11-w1", t: 5.0833, y: 45, d: 0.14 },
+    { id: "#rl11-w2", t: 5.2066, y: 50, d: 0.15 },
+    { id: "#rl11-w3", t: 5.3399, y: 40, d: 0.13 },
+    { id: "#rl11-w4", t: 5.4532, y: 45, d: 0.14 },
+    { id: "#rl11-w5", t: 5.5765, y: 40, d: 0.13 },
+    { id: "#rl11-w6", t: 5.6898, y: 55, d: 0.16 },
+    { id: "#rl11-w7", t: 5.8331, y: 38, d: 0.13 },
+    { id: "#rl11-w8", t: 5.9464, y: 38, d: 0.13 },
+    { id: "#rl11-w9", t: 6.0597, y: 65, d: 0.18 },
+  ];
+  words.forEach(function (w) {
+    tl.set(w.id, { opacity: 1, y: w.y }, w.t);
+    tl.to(w.id, { y: 0, duration: w.d, ease: "power4.out" }, w.t);
+  });
+
+  // =========================================================
+  // Scene 5 (7.1-8.683s) — flash-swap closes on "coloca seu valor";
+  // "valor" isolated in fire-orange, then holds with a subtle jitter
+  // =========================================================
+  var TRIGGER = 7.1, EXIT_DUR = 0.35, OVERLAP = 0.15, ENTER_DUR = 0.55;
+  tl.fromTo(
+    "#rl11-sentence-line",
+    { scale: 1, opacity: 1 },
+    { scale: 0.7, opacity: 0, duration: EXIT_DUR, ease: "power2.in" },
+    TRIGGER
+  );
+  tl.fromTo(
+    "#rl11-swap-line",
+    { scale: 0.7, opacity: 0 },
+    { scale: 1, opacity: 1, duration: ENTER_DUR, ease: "back.out(1.8)" },
+    TRIGGER + EXIT_DUR - OVERLAP
+  );
+
+  var SETTLE = TRIGGER + EXIT_DUR - OVERLAP + ENTER_DUR; // 7.85
+  tl.to("#rl11-valor-word", { scale: 1.06, duration: 0.12, ease: "power1.out" }, SETTLE);
+  tl.to("#rl11-valor-word", { scale: 1, duration: 0.18, ease: "power2.out" }, SETTLE + 0.12);
+
+  (function () {
+    var el = document.getElementById("rl11-valor-word");
+    var start = SETTLE + 0.30; // 8.15
+    var idleDur = 8.683 - start;
+    var phase = { p: 0 };
+    tl.to(
+      phase,
+      {
+        p: Math.PI * 2 * 0.33,
+        duration: idleDur,
+        ease: "none",
+        onUpdate: function () {
+          var s = Math.sin(phase.p);
+          el.style.transform = "translateY(" + (s * 2) + "px) scale(" + (1 + s * 0.008) + ")";
+        },
+      },
+      start
+    );
+  })();
+
+  window.__timelines["11-riqueza-liberdade"] = tl;
+})();
+</script>
+</template>

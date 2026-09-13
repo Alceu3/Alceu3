@@ -1,12 +1,12 @@
 <template>
-  <div id="root" data-composition-id="04-julgamento">
+  <div id="root" data-composition-id="04-julgamento" data-width="1920" data-height="1080" data-duration="9.247">
     <style>
       #root {
         --jul04-ink: #111111;
         --jul04-cream: #f0ece5;
         --jul04-orange: #e85d26;
         --jul04-border: #282826;
-        --jul04-ink-muted: rgba(17, 17, 17, 0.55);
+        --jul04-ink-muted: rgb(90, 88, 85);
         --jul04-font-display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
         --jul04-font-mono: "Courier New", monospace;
         position: relative;
@@ -48,7 +48,7 @@
         font-size: 15px;
         letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: rgba(240, 236, 229, 0.35);
+        color: rgb(109, 107, 104);
         opacity: 0;
       }
 
@@ -203,24 +203,24 @@
       }
     </style>
 
-    <div class="clip jul04-bg" data-start="0" data-duration="8.747" data-track-index="0"></div>
+    <div class="clip jul04-bg" data-start="0" data-duration="9.247" data-track-index="0"></div>
 
     <div
       class="clip jul04-glow jul04-glow-left"
       id="jul04-glow-left"
       data-start="0"
-      data-duration="8.747"
+      data-duration="9.247"
       data-track-index="1"
     ></div>
     <div
       class="clip jul04-glow jul04-glow-right"
       id="jul04-glow-right"
       data-start="0"
-      data-duration="8.747"
-      data-track-index="1"
+      data-duration="9.247"
+      data-track-index="5"
     ></div>
 
-    <div class="clip jul04-num" id="jul04-num" data-start="0" data-duration="8.747" data-track-index="2">
+    <div class="clip jul04-num" id="jul04-num" data-start="0" data-duration="9.247" data-track-index="2">
       n.04
     </div>
 
@@ -228,19 +228,19 @@
       class="clip jul04-kicker-wrap"
       id="jul04-kicker-wrap"
       data-start="0"
-      data-duration="8.747"
-      data-track-index="2"
+      data-duration="9.247"
+      data-track-index="6"
     >
       <span class="jul04-kicker">mesma notícia</span>
       <span class="jul04-rule"></span>
     </div>
 
-    <div class="clip jul04-stage" data-start="0" data-duration="8.747" data-track-index="3">
+    <div class="clip jul04-stage" data-start="0" data-duration="9.247" data-track-index="3" data-layout-allow-overlap>
       <div class="jul04-split">
         <div class="jul04-card jul04-card-left" id="jul04-card-left">
           <div class="jul04-panel-label">pessoa a</div>
           <div class="jul04-headline">demitido</div>
-          <div class="jul04-reaction jul04-reaction-left" id="jul04-reaction-left">desespera</div>
+          <div class="jul04-reaction jul04-reaction-left" id="jul04-reaction-left" data-layout-allow-overlap>desespera</div>
           <svg class="jul04-line-svg" id="jul04-line-left" viewBox="0 0 440 44">
             <path
               id="jul04-path-left"
@@ -254,7 +254,7 @@
         <div class="jul04-card jul04-card-right" id="jul04-card-right">
           <div class="jul04-panel-label">pessoa b</div>
           <div class="jul04-headline">demitido</div>
-          <div class="jul04-reaction jul04-reaction-right" id="jul04-reaction-right">oportunidade</div>
+          <div class="jul04-reaction jul04-reaction-right" id="jul04-reaction-right" data-layout-allow-overlap>oportunidade</div>
           <svg class="jul04-line-svg" id="jul04-line-right" viewBox="0 0 440 44">
             <path
               id="jul04-path-right"
@@ -272,8 +272,9 @@
       class="clip jul04-payoff-wrap"
       id="jul04-payoff-wrap"
       data-start="6.4"
-      data-duration="2.347"
+      data-duration="2.847"
       data-track-index="4"
+      data-layout-allow-overlap
     >
       <div class="jul04-payoff jul04-payoff-a" id="jul04-payoff-a">não são os fatos que perturbam</div>
       <div class="jul04-payoff jul04-payoff-b" id="jul04-payoff-b">
@@ -281,7 +282,7 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="gsap.min.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
       var jul04Tl = gsap.timeline({ paused: true });

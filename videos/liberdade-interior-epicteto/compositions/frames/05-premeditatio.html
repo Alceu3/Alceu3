@@ -6,15 +6,15 @@
       overflow: hidden;
     }
 
-    .05-premeditatio-bg {
+    .fr05-premeditatio-bg {
       background: #111111;
     }
 
-    .05-premeditatio-content {
+    .fr05-premeditatio-content {
       display: block;
     }
 
-    .05-premeditatio-term-wrap {
+    .fr05-premeditatio-term-wrap {
       position: absolute;
       left: 0;
       top: 360px;
@@ -23,7 +23,7 @@
       white-space: nowrap;
     }
 
-    .05-premeditatio-word {
+    .fr05-premeditatio-word {
       display: inline-block;
       font-family: monospace;
       font-weight: 700;
@@ -37,37 +37,37 @@
       will-change: transform;
     }
 
-    .05-premeditatio-line-svg {
+    .fr05-premeditatio-line-svg {
       position: absolute;
       inset: 0;
       width: 1920px;
       height: 1080px;
     }
 
-    .05-premeditatio-seg {
+    .fr05-premeditatio-seg {
       fill: none;
       stroke-linecap: round;
     }
 
-    #05-premeditatio-seg1 {
+    #fr05-premeditatio-seg1 {
       stroke: #e85d26;
       stroke-width: 3;
     }
 
-    #05-premeditatio-seg2 {
+    #fr05-premeditatio-seg2 {
       stroke: #505048;
       stroke-width: 2;
       opacity: 0;
     }
 
-    #05-premeditatio-node {
+    #fr05-premeditatio-node {
       fill: #e85d26;
       opacity: 0;
       transform-origin: 960px 560px;
       will-change: transform;
     }
 
-    .05-premeditatio-phrase-medo {
+    .fr05-premeditatio-phrase-medo {
       position: absolute;
       left: 0;
       top: 648px;
@@ -83,7 +83,7 @@
       transform-origin: 50% 50%;
     }
 
-    .05-premeditatio-clause-final {
+    .fr05-premeditatio-clause-final {
       position: absolute;
       left: 0;
       top: 716px;
@@ -102,56 +102,55 @@
     }
   </style>
 
-  <div id="root" data-composition-id="05-premeditatio" data-width="1920" data-height="1080">
+  <div id="root" data-composition-id="05-premeditatio" data-width="1920" data-height="1080" data-duration="8.244">
     <div
-      class="05-premeditatio-bg clip"
+      class="fr05-premeditatio-bg clip"
       data-start="0"
-      data-duration="7.744"
+      data-duration="8.244"
       data-track-index="0"
     ></div>
 
     <div
-      class="05-premeditatio-content clip"
+      class="fr05-premeditatio-content clip"
       data-start="0"
-      data-duration="7.744"
+      data-duration="8.244"
       data-track-index="1"
     >
-      <div class="05-premeditatio-term-wrap" id="05-premeditatio-term-wrap">
-        <span class="05-premeditatio-word" id="05-premeditatio-word1">premeditatio</span
-        ><span class="05-premeditatio-word" id="05-premeditatio-word2">malorum</span>
+      <div class="fr05-premeditatio-term-wrap" id="fr05-premeditatio-term-wrap">
+        <span class="fr05-premeditatio-word" id="fr05-premeditatio-word1">premeditatio</span><span class="fr05-premeditatio-word" id="fr05-premeditatio-word2">malorum</span>
       </div>
 
-      <svg class="05-premeditatio-line-svg" viewBox="0 0 1920 1080">
+      <svg class="fr05-premeditatio-line-svg" viewBox="0 0 1920 1080">
         <line
-          id="05-premeditatio-seg1"
-          class="05-premeditatio-seg"
+          id="fr05-premeditatio-seg1"
+          class="fr05-premeditatio-seg"
           x1="210"
           y1="560"
           x2="960"
           y2="560"
         />
         <line
-          id="05-premeditatio-seg2"
-          class="05-premeditatio-seg"
+          id="fr05-premeditatio-seg2"
+          class="fr05-premeditatio-seg"
           x1="960"
           y1="560"
           x2="1710"
           y2="560"
         />
-        <circle id="05-premeditatio-node" cx="960" cy="560" r="9" />
+        <circle id="fr05-premeditatio-node" cx="960" cy="560" r="9" />
       </svg>
 
-      <div class="05-premeditatio-phrase-medo" id="05-premeditatio-phrase-medo">
+      <div class="fr05-premeditatio-phrase-medo" id="fr05-premeditatio-phrase-medo">
         não por medo
       </div>
 
-      <div class="05-premeditatio-clause-final" id="05-premeditatio-clause-final">
+      <div class="fr05-premeditatio-clause-final" id="fr05-premeditatio-clause-final">
         nunca dar como garantido
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="gsap.min.js"></script>
   <script>
     (function () {
       window.__timelines = window.__timelines || {};
@@ -161,34 +160,23 @@
       // ---- Scene 1 (0.0-1.8s) — coined term per-word reveal, settle, reduce to kicker ----
 
       tl.fromTo(
-        "#05-premeditatio-word1",
+        "#fr05-premeditatio-word1",
         { scale: 0, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" },
         0.1,
       );
       tl.fromTo(
-        "#05-premeditatio-word2",
+        "#fr05-premeditatio-word2",
         { scale: 0, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" },
         0.3,
       );
 
       // long settle at hero size, then reduce to a small support-size kicker at the top.
+      // (scale stands in for the font-size shrink — same visual shrink, no text reflow.)
       tl.to(
-        "#05-premeditatio-term-wrap",
-        { top: 110, duration: 0.5, ease: "power2.inOut" },
-        1.25,
-      );
-      tl.to(
-        ".05-premeditatio-word",
-        {
-          fontSize: 22,
-          letterSpacing: "0.14em",
-          marginLeft: 8,
-          marginRight: 8,
-          duration: 0.5,
-          ease: "power2.inOut",
-        },
+        "#fr05-premeditatio-term-wrap",
+        { y: -250, scale: 0.34, transformOrigin: "50% 50%", duration: 0.5, ease: "power2.inOut" },
         1.25,
       );
 
@@ -196,25 +184,25 @@
 
       var SEG_LEN = 750; // measured: |960-210| === |1710-960|
 
-      gsap.set("#05-premeditatio-seg1", {
+      gsap.set("#fr05-premeditatio-seg1", {
         strokeDasharray: SEG_LEN,
         strokeDashoffset: SEG_LEN,
       });
-      gsap.set("#05-premeditatio-seg2", {
+      gsap.set("#fr05-premeditatio-seg2", {
         strokeDasharray: SEG_LEN,
         strokeDashoffset: SEG_LEN,
       });
 
       // present-side segment draws in solid fire-orange.
       tl.to(
-        "#05-premeditatio-seg1",
+        "#fr05-premeditatio-seg1",
         { strokeDashoffset: 0, duration: 1.0, ease: "power2.out" },
         1.9,
       );
 
       // the node marks "now" — where the drawn line meets the unknown ahead.
       tl.fromTo(
-        "#05-premeditatio-node",
+        "#fr05-premeditatio-node",
         { scale: 0, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.35, ease: "power3.out" },
         2.9,
@@ -222,7 +210,7 @@
 
       // future-side segment draws faint — the tenuous shadow of possible storms ahead.
       tl.fromTo(
-        "#05-premeditatio-seg2",
+        "#fr05-premeditatio-seg2",
         { strokeDashoffset: SEG_LEN, opacity: 0 },
         { strokeDashoffset: 0, opacity: 0.6, duration: 1.0, ease: "power2.out" },
         3.0,
@@ -230,19 +218,19 @@
 
       // ---- Scene 3 (4.2-5.4s) — "não por medo" hard-cut flash-swap ----
 
-      tl.set("#05-premeditatio-phrase-medo", { opacity: 1 }, 4.3);
+      tl.set("#fr05-premeditatio-phrase-medo", { opacity: 1 }, 4.3);
 
       // ---- Scene 4 (5.4-7.744s) — payoff clause settles over the completed line, subtle jitter ----
 
       tl.fromTo(
-        "#05-premeditatio-clause-final",
+        "#fr05-premeditatio-clause-final",
         { scale: 0.85, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" },
         5.5,
       );
 
       // bounded idle jitter on the held payoff line — begins where the settle ends (phase 0).
-      var clauseEl = document.getElementById("05-premeditatio-clause-final");
+      var clauseEl = document.getElementById("fr05-premeditatio-clause-final");
       var jitterPhase = { p: 0 };
       var IDLE_START = 6.15;
       var IDLE_DUR = 7.744 - IDLE_START;

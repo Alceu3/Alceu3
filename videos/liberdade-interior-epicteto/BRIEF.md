@@ -7,7 +7,7 @@ destination: youtube
 aspect: 1920x1080
 language: pt
 audience: "pessoas interessadas em filosofia prática, estoicismo e desenvolvimento pessoal"
-length: 3.5min
+length: 100s
 angle: concept
 ---
 

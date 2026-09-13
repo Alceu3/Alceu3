@@ -37,6 +37,7 @@
       position: absolute;
       left: 60cqw;
       top: 15cqh;
+      font-size: 16.5cqw;
       font-weight: 900;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -79,12 +80,12 @@
     }
   </style>
 
-  <div id="root" data-composition-id="06-pausa" data-width="1920" data-height="1080">
+  <div id="root" data-composition-id="06-pausa" data-width="1920" data-height="1080" data-duration="8.713">
     <!-- full-bleed ground, its own clip layer per the core contract (never painted on #root) -->
     <div
       class="p06-bg clip"
       data-start="0"
-      data-duration="8.213"
+      data-duration="8.713"
       data-track-index="0"
       style="position: absolute; inset: 0"
     ></div>
@@ -92,7 +93,7 @@
     <div
       class="p06-stage clip"
       data-start="0"
-      data-duration="8.213"
+      data-duration="8.713"
       data-track-index="1"
       style="position: absolute; inset: 0"
     >
@@ -107,11 +108,7 @@
 
       <!-- Scene 4 — the payoff clause, revealed word by word under the now-quiet impulse -->
       <div id="p06-clause" class="p06-clause">
-        <span class="p06-w">nessa</span><span class="p06-w">pausa,</span><span class="p06-w"
-          >o</span
-        ><span class="p06-w">caráter</span><span class="p06-w">se</span><span class="p06-w"
-          >forma.</span
-        >
+        <span class="p06-w">nessa</span><span class="p06-w">pausa,</span><span class="p06-w">o</span><span class="p06-w">caráter</span><span class="p06-w">se</span><span class="p06-w">forma.</span>
       </div>
     </div>
   </div>
@@ -125,10 +122,10 @@
     // Lock every delayed-entrance element to its hidden/collapsed state AT t=0 —
     // a GSAP tween that starts later than 0 does not touch the DOM before it starts,
     // so without this the element would flash at its raw CSS state for the gap.
-    tl06.set("#p06-impulso", { opacity: 0, scale: 0.72 }, 0);
-    tl06.set("#p06-ember", { opacity: 0, fontSize: "5cqw" }, 0);
-    tl06.set("#p06-rule", { scaleX: 0 }, 0);
-    tl06.set(p06Words, { opacity: 0, y: "0.4cqw" }, 0);
+    gsap.set("#p06-impulso", { opacity: 0, scale: 0.72 });
+    gsap.set("#p06-ember", { opacity: 0, scale: 0.303 });
+    gsap.set("#p06-rule", { scaleX: 0 });
+    gsap.set(p06Words, { opacity: 0, y: "0.4cqw" });
 
     // ---- Scene 1 (0.0–2.2s) — "impulso" surges in: spring-pop entrance, smooth settle ----
     // fromTo mechanics per spring-pop-entrance: scale 0.72→1 is the load-bearing axis; hero
@@ -145,8 +142,8 @@
     // upper-right and swells past comfortable size (spilling toward the frame edge as it grows).
     tl06.fromTo(
       "#p06-ember",
-      { fontSize: "5cqw", opacity: 0 },
-      { fontSize: "16.5cqw", opacity: 0.82, duration: 2.0, ease: "sine.in" },
+      { scale: 0.303, opacity: 0 },
+      { scale: 1, opacity: 0.82, duration: 2.0, ease: "sine.in" },
       2.2,
     );
 

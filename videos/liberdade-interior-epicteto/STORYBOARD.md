@@ -1,6 +1,6 @@
 ---
 format: 1920x1080
-duration: 210s
+duration: 100s
 message: "A liberdade não vem do que acontece com você — vem de como você decide se relacionar com o que acontece."
 arc: listicle
 audience: pessoas interessadas em filosofia prática, estoicismo e desenvolvimento pessoal
@@ -23,7 +23,7 @@ language: pt
 - voiceover: "Epicteto nasceu escravo. Viveu com o corpo debilitado. Foi exilado. E ainda assim, tornou-se um dos homens mais livres que já existiram."
 - duration: 7.915s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-abertura.html
 - type: hook
 - persuasion: Counterintuitive claim
@@ -49,7 +49,7 @@ Scene 4 (5.9–7.9s): "escravo" sofre hard-cut/flash word-swap para "livre" em f
 - voiceover: "Como isso é possível? A liberdade não vem do que acontece com você — vem de como você decide se relacionar com o que acontece."
 - duration: 7.36s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-tese.html
 - type: product_intro
 - persuasion: Distillation
@@ -74,7 +74,7 @@ Scene 3 (4.8–7.4s): conforme a VO diz "vem de como você decide se relacionar"
 - voiceover: "Existem coisas sob seu controle — pensamentos, julgamentos, escolhas. E coisas que não estão — reputação, dinheiro, opinião dos outros. O sofrimento nasce de tratar como seu algo que não é."
 - duration: 10.965s
 - transition_in: push-slide UP
-- status: outline
+- status: animated
 - src: compositions/frames/03-controle.html
 - type: feature_showcase
 - persuasion: Frame-then-fill
@@ -101,7 +101,7 @@ Scene 5 (9.6–11.0s): um traço fino fire-orange se autodesenha na divisória c
 - voiceover: "Duas pessoas perdem o emprego no mesmo dia. Uma desespera. A outra vê oportunidade. Não são os fatos que perturbam — é o julgamento sobre eles."
 - duration: 8.747s
 - transition_in: push-slide UP
-- status: outline
+- status: animated
 - src: compositions/frames/04-julgamento.html
 - type: feature_showcase
 - persuasion: Comparison of two options
@@ -128,7 +128,7 @@ Scene 5 (7.6–8.7s): "é o julgamento" pousa centralizado em fire-orange sobre 
 - voiceover: "Premeditatio malorum: antecipar mentalmente as adversidades. Não por medo — para nunca dar como garantido o que não é garantido."
 - duration: 7.744s
 - transition_in: push-slide UP
-- status: outline
+- status: animated
 - src: compositions/frames/05-premeditatio.html
 - type: feature_showcase
 - persuasion: Coined term / mnemonic
@@ -154,7 +154,7 @@ Scene 4 (5.4–7.7s): cláusula final "nunca dar como garantido" assenta central
 - voiceover: "Você não escolhe o impulso inicial de medo ou raiva. Mas escolhe alimentá-lo — ou apenas observá-lo passar. Nessa pausa, o caráter se forma."
 - duration: 8.213s
 - transition_in: push-slide UP
-- status: outline
+- status: animated
 - src: compositions/frames/06-pausa.html
 - type: feature_showcase
 - persuasion: Causal chain
@@ -180,7 +180,7 @@ Scene 4 (6.0–8.2s): "nessa pausa, o caráter se forma" per-word reveal em crea
 - voiceover: "Não explique sua filosofia. Incorpore-a. Julgue-se pelas suas ações — não pelas suas palavras."
 - duration: 5.483s
 - transition_in: push-slide UP
-- status: outline
+- status: animated
 - src: compositions/frames/07-acoes.html
 - type: feature_showcase
 - persuasion: Before/after
@@ -204,7 +204,7 @@ Scene 2 (2.2–5.5s): flash word-swap para "ações, não palavras" centralizado
 - voiceover: "Quem te ofende age a partir da própria confusão sobre o que é bom e ruim. Recuse dar a essa pessoa o poder sobre seu estado interior."
 - duration: 7.68s
 - transition_in: push-slide UP
-- status: outline
+- status: animated
 - src: compositions/frames/08-outros.html
 - type: feature_showcase
 - persuasion: Subtractive framing
@@ -230,7 +230,7 @@ Scene 4 (5.9–7.7s): "seu estado interior" assenta centro-direita em fire-orang
 - voiceover: "A vida é uma peça de teatro. Você não escolhe todos os papéis — mas deve interpretar bem o papel recebido."
 - duration: 6.443s
 - transition_in: push-slide UP
-- status: outline
+- status: animated
 - src: compositions/frames/09-papel.html
 - type: feature_showcase
 - persuasion: Analogy / metaphor
@@ -255,7 +255,7 @@ Scene 3 (4.1–6.4s): flash word-swap para "interprete bem o papel recebido" cen
 - voiceover: "Como um arqueiro: você controla a mira e a técnica — não o vento que desvia a flecha. Desapegue-se do resultado. Comprometa-se com o esforço."
 - duration: 7.872s
 - transition_in: push-slide UP
-- status: outline
+- status: animated
 - src: compositions/frames/10-arqueiro.html
 - type: feature_showcase
 - persuasion: Analogy / metaphor
@@ -281,7 +281,7 @@ Scene 4 (5.2–7.9s): "desapegue-se do resultado. comprometa-se com o esforço" 
 - voiceover: "Riqueza não é ter muito — é desejar pouco. E ninguém é livre se não é senhor de si mesmo. A liberdade estoica depende de onde você coloca seu valor."
 - duration: 8.683s
 - transition_in: push-slide UP
-- status: outline
+- status: animated
 - src: compositions/frames/11-riqueza-liberdade.html
 - type: benefit_highlight
 - persuasion: Common-belief vs reality
@@ -308,7 +308,7 @@ Scene 5 (7.1–8.7s): "coloca seu valor" flash-swap fecha; "valor" isolado em fi
 - voiceover: "Nenhum desses princípios impede que coisas difíceis aconteçam. Mas você pode atravessá-las sem se quebrar — porque sua paz nunca dependeu inteiramente do mundo externo. Sua mente é seu reino. Governe-a com sabedoria."
 - duration: 12.48s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/12-conclusao.html
 - type: branding
 - persuasion: Generalization

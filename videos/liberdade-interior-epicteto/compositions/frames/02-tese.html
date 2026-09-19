@@ -1,0 +1,260 @@
+<template>
+  <style>
+    #root {
+      container-type: size;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tese02-bg {
+      position: absolute;
+      inset: 0;
+      background: #111111;
+    }
+
+    .tese02-stage {
+      position: relative;
+      margin-top: 24cqh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 0 5.5cqw;
+    }
+
+    .tese02-kicker {
+      font-family: ui-monospace, "DejaVu Sans Mono", "Liberation Mono", "Courier New", monospace;
+      font-weight: 500;
+      font-size: 0.9cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #e85d26;
+      opacity: 0;
+      margin-bottom: 1.6cqw;
+    }
+
+    .tese02-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: 0.9cqw;
+      row-gap: 0.4cqw;
+      max-width: 84cqw;
+    }
+
+    .tese02-hw {
+      display: inline-block;
+      font-family: -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+      font-weight: 800;
+      font-size: 7.5cqw;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      text-transform: lowercase;
+      color: #f0ece5;
+      opacity: 0;
+      will-change: transform, opacity;
+      transform-origin: 50% 50%;
+    }
+
+    .tese02-clause-wrap {
+      position: relative;
+      width: 82cqw;
+      max-width: 82cqw;
+      min-height: 9.5cqw;
+      margin-top: 3.5cqw;
+    }
+
+    .tese02-clause {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+      font-weight: 700;
+      font-size: 3.8cqw;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
+      color: #f0ece5;
+      opacity: 0;
+      transform-origin: 50% 50%;
+      will-change: transform, opacity;
+    }
+
+    #tese02-clause-a {
+      z-index: 1;
+    }
+
+    #tese02-clause-b {
+      z-index: 2;
+    }
+
+    .tese02-keyword {
+      display: inline-block;
+      color: #e85d26;
+      transform-origin: 50% 50%;
+      will-change: transform;
+    }
+  </style>
+
+  <div id="root" data-composition-id="02-tese" data-width="1920" data-height="1080" data-duration="7.86">
+    <div
+      class="tese02-bg clip"
+      data-start="0"
+      data-duration="7.86"
+      data-track-index="0"
+    ></div>
+
+    <div class="tese02-stage">
+      <div
+        class="tese02-kicker clip"
+        id="tese02-kicker"
+        data-start="0"
+        data-duration="7.86"
+        data-track-index="1"
+      >
+        a tese
+      </div>
+
+      <div
+        class="tese02-header clip"
+        data-start="0"
+        data-duration="7.86"
+        data-track-index="2"
+        id="tese02-header"
+      >
+        <span class="tese02-hw" id="tese02-hw1">Como</span>
+        <span class="tese02-hw" id="tese02-hw2">isso</span>
+        <span class="tese02-hw" id="tese02-hw3">é</span>
+        <span class="tese02-hw" id="tese02-hw4">possível?</span>
+      </div>
+
+      <div
+        class="tese02-clause-wrap clip"
+        data-start="1.8"
+        data-duration="6.06"
+        data-track-index="3"
+      >
+        <div class="tese02-clause" id="tese02-clause-a">
+          a liberdade não vem do que acontece com você
+        </div>
+        <div class="tese02-clause" id="tese02-clause-b">
+          vem de como você <span class="tese02-keyword" id="tese02-keyword">decide</span> se relacionar
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    // ---- Scene 1 (0.0–1.8s): kicker + per-word waterfall entry of the opening question ----
+    tl.fromTo(
+      "#tese02-kicker",
+      { opacity: 0, y: -10 },
+      { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+      0.05
+    );
+
+    // waterfall-entry: overlapping cascade, opacity binary via tl.set, velocity varies by weight
+    tl.set("#tese02-hw1", { opacity: 1, y: 45 }, 0.15);
+    tl.to("#tese02-hw1", { y: 0, duration: 0.15, ease: "power4.out" }, 0.15);
+
+    tl.set("#tese02-hw2", { opacity: 1, y: 45 }, 0.28);
+    tl.to("#tese02-hw2", { y: 0, duration: 0.15, ease: "power4.out" }, 0.28);
+
+    tl.set("#tese02-hw3", { opacity: 1, y: 34 }, 0.41);
+    tl.to("#tese02-hw3", { y: 0, duration: 0.12, ease: "power4.out" }, 0.41);
+
+    // climax word — heaviest travel, longest settle ("settle longo")
+    tl.set("#tese02-hw4", { opacity: 1, y: 60 }, 0.51);
+    tl.to("#tese02-hw4", { y: 0, duration: 0.2, ease: "power4.out" }, 0.51);
+    // header now holds static until 1.8s — the long settle / breather
+
+    // ---- Scene 2 (1.8–4.8s): thesis clause enters below, dimmed ~40%, header recedes ----
+    tl.to(
+      "#tese02-header",
+      { opacity: 0.5, duration: 0.6, ease: "power2.out" },
+      1.8
+    );
+    tl.fromTo(
+      "#tese02-clause-a",
+      { opacity: 0, y: 30 },
+      { opacity: 0.6, y: 0, duration: 0.6, ease: "power3.out" },
+      1.8
+    );
+    // clause-a holds dimmed and static through the rest of Scene 2
+
+    // ---- Scene 3 (4.8–7.36s): flash-swap to the payoff clause; "decide" isolates in fire-orange ----
+    tl.to(
+      "#tese02-header",
+      { opacity: 0.22, duration: 0.4, ease: "power2.out" },
+      4.8
+    );
+
+    // scale-swap-transition: outgoing rushes away, incoming pops in with overshoot (the "flash")
+    tl.to(
+      "#tese02-clause-a",
+      { scale: 0.72, opacity: 0, duration: 0.25, ease: "power2.in" },
+      4.8
+    );
+    tl.fromTo(
+      "#tese02-clause-b",
+      { scale: 0.72, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.6)" },
+      4.9
+    );
+
+    // asr-keyword-glow (single-keyword adaptation): "decide" blooms then settles to a rest emphasis
+    (function () {
+      var GLOW_START = 0.6; // local to the driver, which begins at t=4.8
+      var GLOW_END = 1.0;
+      var ATTACK_DUR = 0.2;
+      var RELEASE = 0.4;
+      var REST_LEVEL = 0.3;
+      var MAX_BLUR = 22;
+      var MAX_SCALE_BOOST = 0.12;
+
+      function envelope(t) {
+        if (t < GLOW_START) return 0;
+        if (t < GLOW_END) return Math.min((t - GLOW_START) / ATTACK_DUR, 1);
+        var releaseEnd = GLOW_END + RELEASE;
+        if (t < releaseEnd) {
+          return 1 - ((t - GLOW_END) / RELEASE) * (1 - REST_LEVEL);
+        }
+        return REST_LEVEL;
+      }
+
+      var driver = { t: 0 };
+      tl.to(
+        driver,
+        {
+          t: 2.56,
+          duration: 2.56,
+          ease: "none",
+          onUpdate: function () {
+            var env = envelope(driver.t);
+            var kw = document.getElementById("tese02-keyword");
+            if (!kw) return;
+            kw.style.textShadow =
+              "0 0 " + (MAX_BLUR * env).toFixed(2) + "px rgba(232,93,38," + (0.25 + 0.55 * env).toFixed(3) + ")";
+            kw.style.transform = "scale(" + (1 + MAX_SCALE_BOOST * env).toFixed(4) + ")";
+          },
+        },
+        4.8
+      );
+    })();
+
+    // clause-b + glowed "decide" hold static to the end — no exit (non-final frame)
+
+    window.__timelines["02-tese"] = tl;
+  </script>
+</template>

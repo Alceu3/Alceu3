@@ -1,0 +1,247 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .f03controle-bg {
+      position: absolute;
+      inset: 0;
+      background: #111111;
+    }
+
+    .f03controle-content {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* — column labels — */
+    .f03controle-label {
+      position: absolute;
+      top: 108px;
+      display: flex;
+      gap: 16px;
+      font-family: ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+      font-weight: 600;
+      font-size: 34px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .f03controle-label--left {
+      left: 100px;
+      color: #e85d26;
+    }
+    .f03controle-label--right {
+      left: 1212px;
+      color: #f0ece5;
+    }
+    .f03controle-word {
+      display: inline-block;
+    }
+
+    /* — tile wraps (center-outward-expansion burst-wrap) — */
+    .f03controle-tilewrap {
+      position: absolute;
+      top: 230px;
+      height: 660px;
+      display: grid;
+      place-items: center;
+    }
+    .f03controle-tilewrap--left {
+      left: 100px;
+      width: 992px;
+    }
+    .f03controle-tilewrap--right {
+      left: 1212px;
+      width: 608px;
+    }
+
+    .f03controle-tile {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 460px;
+      height: 110px;
+      background: #f0ece5;
+      border-top: 4px solid #e85d26;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      will-change: transform;
+    }
+    .f03controle-tilewrap--right .f03controle-tile {
+      width: 560px;
+    }
+    .f03controle-tile-label {
+      font-size: 34px;
+      font-weight: 800;
+      color: #111111;
+      text-transform: lowercase;
+      letter-spacing: -0.01em;
+    }
+
+    /* — central divider payoff — */
+    .f03controle-divider-svg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .f03controle-divider-line {
+      fill: none;
+      stroke: #e85d26;
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="03-controle"
+   data-width="1920" data-height="1080" data-duration="11.465">
+    <div class="clip f03controle-bg" data-start="0" data-duration="11.465" data-track-index="0"></div>
+
+    <div class="clip f03controle-content" data-start="0" data-duration="11.465" data-track-index="1">
+      <!-- left column: "sob seu controle" -->
+      <div class="f03controle-label f03controle-label--left" id="f03controle-label-left">
+        <span class="f03controle-word">SOB</span>
+        <span class="f03controle-word">SEU</span>
+        <span class="f03controle-word">CONTROLE</span>
+      </div>
+
+      <div class="f03controle-tilewrap f03controle-tilewrap--left" id="f03controle-tilewrap-left">
+        <div class="f03controle-tile" id="f03controle-tile-l1" data-target-y="-156">
+          <span class="f03controle-tile-label">pensamentos</span>
+        </div>
+        <div class="f03controle-tile" id="f03controle-tile-l2" data-target-y="0">
+          <span class="f03controle-tile-label">julgamentos</span>
+        </div>
+        <div class="f03controle-tile" id="f03controle-tile-l3" data-target-y="156">
+          <span class="f03controle-tile-label">escolhas</span>
+        </div>
+      </div>
+
+      <!-- right column: "fora do seu controle" -->
+      <div class="f03controle-label f03controle-label--right" id="f03controle-label-right">
+        <span class="f03controle-word">FORA</span>
+        <span class="f03controle-word">DO</span>
+        <span class="f03controle-word">SEU</span>
+        <span class="f03controle-word">CONTROLE</span>
+      </div>
+
+      <div class="f03controle-tilewrap f03controle-tilewrap--right" id="f03controle-tilewrap-right">
+        <div class="f03controle-tile" id="f03controle-tile-r1" data-target-y="-156">
+          <span class="f03controle-tile-label">reputação</span>
+        </div>
+        <div class="f03controle-tile" id="f03controle-tile-r2" data-target-y="0">
+          <span class="f03controle-tile-label">dinheiro</span>
+        </div>
+        <div class="f03controle-tile" id="f03controle-tile-r3" data-target-y="156">
+          <span class="f03controle-tile-label">opinião dos outros</span>
+        </div>
+      </div>
+
+      <!-- central divisor — the payoff, drawn last -->
+      <svg class="f03controle-divider-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <line
+          id="f03controle-divider-line"
+          class="f03controle-divider-line"
+          x1="1152"
+          y1="112"
+          x2="1152"
+          y2="888"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <script src="gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+
+      // --- setup: measure the divider line for the draw-in ---
+      var dividerLine = document.getElementById("f03controle-divider-line");
+      var dividerLen = dividerLine.getTotalLength();
+      dividerLine.style.strokeDasharray = String(dividerLen);
+      dividerLine.style.strokeDashoffset = String(dividerLen);
+
+      var tl = gsap.timeline({ paused: true });
+
+      // === Scene 1 (0.0–2.1s): left label per-word reveal ===
+      var leftWords = document.querySelectorAll("#f03controle-label-left .f03controle-word");
+      leftWords.forEach(function (w, i) {
+        tl.fromTo(
+          w,
+          { opacity: 0, x: -22 },
+          { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
+          0.3 + i * 0.15,
+        );
+      });
+
+      // === Scene 2 (2.1–4.8s): left tiles cluster -> outward expansion, one per word ===
+      var leftTiles = [
+        { el: "#f03controle-tile-l1", at: 2.1 },
+        { el: "#f03controle-tile-l2", at: 3.3 },
+        { el: "#f03controle-tile-l3", at: 4.3 },
+      ];
+      leftTiles.forEach(function (t) {
+        var el = document.querySelector(t.el);
+        var targetY = Number(el.dataset.targetY);
+        tl.fromTo(
+          el,
+          { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 0.6, opacity: 0 },
+          { x: 0, y: targetY, scale: 1, opacity: 1, duration: 0.9, ease: "power3.out" },
+          t.at,
+        );
+      });
+
+      // === Scene 3 (4.8–6.9s): right label per-word reveal ===
+      var rightWords = document.querySelectorAll("#f03controle-label-right .f03controle-word");
+      rightWords.forEach(function (w, i) {
+        tl.fromTo(
+          w,
+          { opacity: 0, x: -22 },
+          { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
+          4.9 + i * 0.15,
+        );
+      });
+
+      // === Scene 4 (6.9–9.6s): right tiles cluster -> outward expansion, one per word ===
+      var rightTiles = [
+        { el: "#f03controle-tile-r1", at: 6.9 },
+        { el: "#f03controle-tile-r2", at: 8.0 },
+        { el: "#f03controle-tile-r3", at: 9.0 },
+      ];
+      rightTiles.forEach(function (t) {
+        var el = document.querySelector(t.el);
+        var targetY = Number(el.dataset.targetY);
+        tl.fromTo(
+          el,
+          { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 0.6, opacity: 0 },
+          { x: 0, y: targetY, scale: 1, opacity: 1, duration: 0.9, ease: "power3.out" },
+          t.at,
+        );
+      });
+
+      // === Scene 5 (9.6–10.965s): central divider self-draws, then holds w/ subtle jitter ===
+      tl.to(
+        dividerLine,
+        { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" },
+        9.6,
+      );
+      // subtle static jitter after the draw settles — low-amplitude, bounded, not a breathing loop
+      tl.to(
+        dividerLine,
+        { x: 1, duration: 0.3325, ease: "sine.inOut", yoyo: true, repeat: 1 },
+        10.3,
+      );
+
+      window.__timelines["03-controle"] = tl;
+    })();
+  </script>
+</template>
